@@ -19,14 +19,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    NSString *baseUrlString = @"https://api.tinkoff.ru/v1/";
-    NSURL *baseUrl = [NSURL URLWithString:baseUrlString];
-    
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithBaseURL:baseUrl];
-    
-    NSString *requestString = @"deposition_partners?accountType=Credit";
-    
-    [manager fetchPartners:requestString];
+//    NSString *baseUrlString = @"https://api.tinkoff.ru/v1/";
+//    NSURL *baseUrl = [NSURL URLWithString:baseUrlString];
+//    
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithBaseURL:baseUrl];
+//    
+//    NSString *requestString = @"deposition_partners?accountType=Credit";
+//    
+//    [manager fetchPartners:requestString];
     
     return YES;
 }
