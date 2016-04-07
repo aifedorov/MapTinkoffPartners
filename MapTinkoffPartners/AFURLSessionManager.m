@@ -49,7 +49,7 @@
     return self;
 }
 
-- (void) fetchPartners:(NSString *)requestUrlString:(NSString *)requestUrlString {
+- (void) fetchPartners:(NSString *)requestUrlString {
     
     NSURL *requestUrl = [NSURL URLWithString:requestUrlString relativeToURL:self.baseURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:requestUrl];

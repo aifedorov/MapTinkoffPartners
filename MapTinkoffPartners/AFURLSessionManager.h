@@ -16,6 +16,6 @@
 - (instancetype)initWithBaseURL:(NSURL *)url
            sessionConfiguration:(NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 
-- (void) fetchPartner:(NSString *)requestUrlString;
+- (void) fetchPartners:(NSString *)requestUrlString;
 
 @end
