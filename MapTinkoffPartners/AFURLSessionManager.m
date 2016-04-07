@@ -18,14 +18,25 @@
 @implementation AFURLSessionManager
 
 - (instancetype)init {
-    return [self initWithSessionConfiguration:nil];
+    return [self initWithBaseURL:nil];
 }
 
-- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration {
+- (instancetype)initWithBaseURL:(NSURL *)url {
+    return [self initWithBaseURL:url sessionConfiguration:nil];
+}
+
+- (instancetype)initWithBaseURL:(nullable NSURL *)url
+           sessionConfiguration:(nullable NSURLSessionConfiguration *)configuration {
     self = [super init];
     if (!self) {
         return nil;
     }
+    
+    if ([[url path] length] > 0 && ![[url absoluteString] hasSuffix:@"/"]) {
+        url = [url URLByAppendingPathComponent:@""];
+    }
+    
+    self.baseURL = url;
     
     if (!configuration) {
         configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -38,10 +49,10 @@
     return self;
 }
 
-- (void) fetchFeed {
-    NSString *requestString = @"http://bookapi.bignerdranch.com/courses.json";
-    NSURL *url = [NSURL URLWithString:requestString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+- (void) fetchPartners:(NSString *)requestUrlString:(NSString *)requestUrlString {
+    
+    NSURL *requestUrl = [NSURL URLWithString:requestUrlString relativeToURL:self.baseURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:requestUrl];
     
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         

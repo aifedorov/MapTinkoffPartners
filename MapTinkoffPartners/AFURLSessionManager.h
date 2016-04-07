@@ -10,9 +10,12 @@
 
 @interface AFURLSessionManager : NSObject
 
-- (instancetype)init;
-- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
+@property (nonatomic, strong) NSURL *baseURL;
 
-- (void) fetchFeed;
+- (instancetype)initWithBaseURL:(NSURL *)url;
+- (instancetype)initWithBaseURL:(NSURL *)url
+           sessionConfiguration:(NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
+
+- (void) fetchPartner:(NSString *)requestUrlString;
 
 @end
