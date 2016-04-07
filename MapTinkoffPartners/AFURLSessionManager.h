@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AFServerManager : NSObject
+@interface AFURLSessionManager : NSObject
 
-+ (instancetype) sharedManager;
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 
 @end
