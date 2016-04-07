@@ -6,9 +6,9 @@
 //  Copyright © 2016 Home. All rights reserved.
 //
 
-#import "AFMinusButtonView.h"
+#import "AFMinusView.h"
 
-@implementation AFMinusButtonView
+@implementation AFMinusView
 
 - (void)drawRect:(CGRect)rect {
     

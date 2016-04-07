@@ -16,8 +16,9 @@
 		11CC3D4B1CB6555600828DC9 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D4A1CB6555600828DC9 /* AFURLSessionManager.m */; };
 		11CC3D501CB657DF00828DC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CC3D4F1CB657DF00828DC9 /* MapKit.framework */; };
 		11CC3D791CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D771CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld */; };
-		11CC3D7C1CB6AB9A00828DC9 /* AFPlusButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D7B1CB6AB9A00828DC9 /* AFPlusButtonView.m */; };
-		11CC3D7F1CB6ABA900828DC9 /* AFMinusButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D7E1CB6ABA900828DC9 /* AFMinusButtonView.m */; };
+		11CC3D7C1CB6AB9A00828DC9 /* AFPlusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D7B1CB6AB9A00828DC9 /* AFPlusView.m */; };
+		11CC3D7F1CB6ABA900828DC9 /* AFMinusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D7E1CB6ABA900828DC9 /* AFMinusView.m */; };
+		11CC3D831CB6EA5700828DC9 /* AFCurentLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D821CB6EA5600828DC9 /* AFCurentLocationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,10 +36,12 @@
 		11CC3D4A1CB6555600828DC9 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		11CC3D4F1CB657DF00828DC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		11CC3D781CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MapTinkoffPartners.xcdatamodel; sourceTree = "<group>"; };
-		11CC3D7A1CB6AB9A00828DC9 /* AFPlusButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPlusButtonView.h; sourceTree = "<group>"; };
-		11CC3D7B1CB6AB9A00828DC9 /* AFPlusButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPlusButtonView.m; sourceTree = "<group>"; };
-		11CC3D7D1CB6ABA900828DC9 /* AFMinusButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFMinusButtonView.h; sourceTree = "<group>"; };
-		11CC3D7E1CB6ABA900828DC9 /* AFMinusButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFMinusButtonView.m; sourceTree = "<group>"; };
+		11CC3D7A1CB6AB9A00828DC9 /* AFPlusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPlusView.h; sourceTree = "<group>"; };
+		11CC3D7B1CB6AB9A00828DC9 /* AFPlusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPlusView.m; sourceTree = "<group>"; };
+		11CC3D7D1CB6ABA900828DC9 /* AFMinusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFMinusView.h; sourceTree = "<group>"; };
+		11CC3D7E1CB6ABA900828DC9 /* AFMinusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFMinusView.m; sourceTree = "<group>"; };
+		11CC3D811CB6EA5600828DC9 /* AFCurentLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCurentLocationView.h; sourceTree = "<group>"; };
+		11CC3D821CB6EA5600828DC9 /* AFCurentLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFCurentLocationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +120,12 @@
 		11CC3D801CB6ABAE00828DC9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				11CC3D7A1CB6AB9A00828DC9 /* AFPlusButtonView.h */,
-				11CC3D7B1CB6AB9A00828DC9 /* AFPlusButtonView.m */,
-				11CC3D7D1CB6ABA900828DC9 /* AFMinusButtonView.h */,
-				11CC3D7E1CB6ABA900828DC9 /* AFMinusButtonView.m */,
+				11CC3D7A1CB6AB9A00828DC9 /* AFPlusView.h */,
+				11CC3D7B1CB6AB9A00828DC9 /* AFPlusView.m */,
+				11CC3D7D1CB6ABA900828DC9 /* AFMinusView.h */,
+				11CC3D7E1CB6ABA900828DC9 /* AFMinusView.m */,
+				11CC3D811CB6EA5600828DC9 /* AFCurentLocationView.h */,
+				11CC3D821CB6EA5600828DC9 /* AFCurentLocationView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -196,13 +201,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11CC3D7F1CB6ABA900828DC9 /* AFMinusButtonView.m in Sources */,
+				11CC3D7F1CB6ABA900828DC9 /* AFMinusView.m in Sources */,
 				11CC3D3A1CB6549600828DC9 /* AFMapViewController.m in Sources */,
 				11CC3D4B1CB6555600828DC9 /* AFURLSessionManager.m in Sources */,
 				11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */,
 				11CC3D341CB6549600828DC9 /* main.m in Sources */,
+				11CC3D831CB6EA5700828DC9 /* AFCurentLocationView.m in Sources */,
 				11CC3D791CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld in Sources */,
-				11CC3D7C1CB6AB9A00828DC9 /* AFPlusButtonView.m in Sources */,
+				11CC3D7C1CB6AB9A00828DC9 /* AFPlusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

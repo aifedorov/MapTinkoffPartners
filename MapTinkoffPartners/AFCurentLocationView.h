@@ -1,5 +1,5 @@
 //
-//  AFMinusButtonView.h
+//  AFCurentLocationView.h
 //  MapTinkoffPartners
 //
 //  Created by Александр on 07.04.16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AFMinusButtonView : UIView
+@interface AFCurentLocationView : UIView
 
 @end

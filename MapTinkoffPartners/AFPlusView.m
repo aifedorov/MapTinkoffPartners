@@ -6,9 +6,9 @@
 //  Copyright © 2016 Home. All rights reserved.
 //
 
-#import "AFPlusButtonView.h"
+#import "AFPlusView.h"
 
-@implementation AFPlusButtonView
+@implementation AFPlusView
 
 - (void)drawRect:(CGRect)rect {
     

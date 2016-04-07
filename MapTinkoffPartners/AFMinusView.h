@@ -1,5 +1,5 @@
 //
-//  AFPlusButtonView.h
+//  AFMinusButtonView.h
 //  MapTinkoffPartners
 //
 //  Created by Александр on 07.04.16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AFPlusButtonView : UIView
+@interface AFMinusView : UIView
 
 @end

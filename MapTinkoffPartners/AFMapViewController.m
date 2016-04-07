@@ -11,11 +11,9 @@
 
 @interface AFMapViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *buttonZoomPlusView;
-@property (weak, nonatomic) IBOutlet UIView *buttonZoomMinusView;
-
 @property (weak, nonatomic) IBOutlet UIButton *plusZoomButton;
 @property (weak, nonatomic) IBOutlet UIButton *minusZoomButton;
+@property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 
 
 @end
@@ -25,25 +23,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    MKUserTrackingBarButtonItem *buttonItem = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
-    self.navigationItem.rightBarButtonItem = buttonItem;
-    
-//    CAShapeLayer *circleLayerPlus = [CAShapeLayer layer];
-//    [circleLayerPlus setPath:[[UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 50, 50)] CGPath]];
-//    
-//    CAShapeLayer *circleLayerMinus = [CAShapeLayer layer];
-//    [circleLayerMinus setPath:[[UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 50, 50)] CGPath]];
-//    
-//    self.buttonZoomPlusView.layer.mask = circleLayerPlus;
-//    self.buttonZoomMinusView.layer.mask = circleLayerMinus;
-    
     [self.plusZoomButton setBackgroundImage:[self imageWithColor:[UIColor darkGrayColor]] forState:UIControlStateHighlighted];
     [self.minusZoomButton setBackgroundImage:[self imageWithColor:[UIColor darkGrayColor]] forState:UIControlStateHighlighted];
+     [self.currentLocationButton setBackgroundImage:[self imageWithColor:[UIColor darkGrayColor]] forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Actions
+- (IBAction)centerMapOnUserButtonClicked:(id)sender {
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+}
+
+- (IBAction)zoomOut:(id)sender {
+    MKCoordinateRegion theRegion = self.mapView.region;
+    if ( theRegion.span.longitudeDelta < 100 && theRegion.span.latitudeDelta < 100) {
+        theRegion.span.longitudeDelta *= 2;
+        theRegion.span.latitudeDelta *= 2;
+        [self.mapView setRegion:theRegion animated:YES];
+    }
+}
+
+- (IBAction)zoomIn:(id)sender {
+    MKCoordinateRegion theRegion = self.mapView.region;
+    
+    if ( theRegion.span.longitudeDelta > 0.001 && theRegion.span.latitudeDelta > 0.001) {
+        theRegion.span.longitudeDelta /= 2;
+        theRegion.span.latitudeDelta /= 2;
+        [self.mapView setRegion:theRegion animated:YES];
+    }
 }
 
 

@@ -32,13 +32,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HLb-pX-Hx7">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HLb-pX-Hx7">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QmD-8r-TZD">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9f-fi-MBv" customClass="AFMinusButtonView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9f-fi-MBv" customClass="AFMinusView">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbJ-Hk-ZeA">
@@ -47,6 +47,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.37088169529999998" green="0.35457456500000001" blue="0.36455659130000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="zoomOut:" destination="KNh-k6-Sps" eventType="touchUpInside" id="9bw-vP-huV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,7 +88,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npe-Oo-ymd" customClass="AFPlusButtonView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npe-Oo-ymd" customClass="AFPlusView">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crJ-aT-g5i">
@@ -94,6 +97,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="zoomIn:" destination="KNh-k6-Sps" eventType="touchUpInside" id="VHG-v6-TQD"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -147,12 +153,12 @@
                                         <exclude reference="npe-Oo-ymd"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="Mlo-F9-ht1"/>
+                                        <exclude reference="npT-0B-1rS"/>
                                         <exclude reference="k1E-s0-LbV"/>
                                         <exclude reference="l2E-nb-erR"/>
                                         <exclude reference="nGf-Do-8JB"/>
                                         <exclude reference="o4D-mD-8ev"/>
-                                        <exclude reference="Mlo-F9-ht1"/>
-                                        <exclude reference="npT-0B-1rS"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -161,12 +167,53 @@
                                         <include reference="npe-Oo-ymd"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="Mlo-F9-ht1"/>
+                                        <include reference="npT-0B-1rS"/>
                                         <include reference="k1E-s0-LbV"/>
                                         <include reference="l2E-nb-erR"/>
                                         <include reference="nGf-Do-8JB"/>
                                         <include reference="o4D-mD-8ev"/>
-                                        <include reference="Mlo-F9-ht1"/>
-                                        <include reference="npT-0B-1rS"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-sB-Dwy" customClass="AFCurentLocationView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxs-pU-Pa8">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="80"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.37088169529999998" green="0.35457456500000001" blue="0.36455659130000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="centerMapOnUserButtonClicked:" destination="KNh-k6-Sps" eventType="touchUpInside" id="7tA-HU-zyp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Sxm-xF-5I3"/>
+                                    <constraint firstAttribute="width" constant="50" id="UpF-fH-dfv"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="Bxs-pU-Pa8"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="Sxm-xF-5I3"/>
+                                        <exclude reference="UpF-fH-dfv"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="Bxs-pU-Pa8"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="Sxm-xF-5I3"/>
+                                        <include reference="UpF-fH-dfv"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -179,10 +226,13 @@
                             <constraint firstAttribute="trailing" secondItem="HLb-pX-Hx7" secondAttribute="trailing" id="NYv-fJ-ZVo"/>
                             <constraint firstItem="HLb-pX-Hx7" firstAttribute="top" secondItem="M6c-DR-4zf" secondAttribute="top" id="a1o-ER-wJ2"/>
                             <constraint firstItem="HLb-pX-Hx7" firstAttribute="leading" secondItem="M6c-DR-4zf" secondAttribute="leading" id="bqt-7Z-Wfu"/>
+                            <constraint firstAttribute="trailing" secondItem="dHW-sB-Dwy" secondAttribute="trailing" constant="8" id="fz4-zc-NXn"/>
+                            <constraint firstItem="Eje-rn-dkc" firstAttribute="top" secondItem="dHW-sB-Dwy" secondAttribute="bottom" constant="30" id="qB6-VH-qCB"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="QmD-8r-TZD"/>
+                                <exclude reference="dHW-sB-Dwy"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="1Rw-Lj-VdX"/>
@@ -191,11 +241,14 @@
                                 <exclude reference="a1o-ER-wJ2"/>
                                 <exclude reference="bqt-7Z-Wfu"/>
                                 <exclude reference="3Ui-YU-4U5"/>
+                                <exclude reference="fz4-zc-NXn"/>
+                                <exclude reference="qB6-VH-qCB"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="QmD-8r-TZD"/>
+                                <include reference="dHW-sB-Dwy"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="1Rw-Lj-VdX"/>
@@ -204,13 +257,14 @@
                                 <include reference="a1o-ER-wJ2"/>
                                 <include reference="bqt-7Z-Wfu"/>
                                 <include reference="3Ui-YU-4U5"/>
+                                <include reference="fz4-zc-NXn"/>
+                                <include reference="qB6-VH-qCB"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Aox-yy-FNr"/>
                     <connections>
-                        <outlet property="buttonZoomMinusView" destination="Q9f-fi-MBv" id="ihu-mh-iWM"/>
-                        <outlet property="buttonZoomPlusView" destination="npe-Oo-ymd" id="gYD-7U-raF"/>
+                        <outlet property="currentLocationButton" destination="Bxs-pU-Pa8" id="m5L-NI-dOV"/>
                         <outlet property="mapView" destination="HLb-pX-Hx7" id="7W2-gW-Vvz"/>
                         <outlet property="minusZoomButton" destination="WbJ-Hk-ZeA" id="FyM-Xl-0MT"/>
                         <outlet property="plusZoomButton" destination="crJ-aT-g5i" id="UF0-Ei-O0Q"/>
@@ -218,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXC-p7-ydQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="576" y="376"/>
+            <point key="canvasLocation" x="609" y="376"/>
         </scene>
     </scenes>
 </document>
