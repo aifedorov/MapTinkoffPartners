@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		11CC3D341CB6549600828DC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D331CB6549600828DC9 /* main.m */; };
 		11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D361CB6549600828DC9 /* AppDelegate.m */; };
-		11CC3D3A1CB6549600828DC9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D391CB6549600828DC9 /* ViewController.m */; };
+		11CC3D3A1CB6549600828DC9 /* AFMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D391CB6549600828DC9 /* AFMapViewController.m */; };
 		11CC3D3D1CB6549600828DC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC3D3B1CB6549600828DC9 /* Main.storyboard */; };
 		11CC3D3F1CB6549600828DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11CC3D3E1CB6549600828DC9 /* Assets.xcassets */; };
 		11CC3D421CB6549600828DC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC3D401CB6549600828DC9 /* LaunchScreen.storyboard */; };
 		11CC3D4B1CB6555600828DC9 /* AFServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D4A1CB6555600828DC9 /* AFServerManager.m */; };
+		11CC3D501CB657DF00828DC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CC3D4F1CB657DF00828DC9 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +22,15 @@
 		11CC3D331CB6549600828DC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		11CC3D351CB6549600828DC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11CC3D361CB6549600828DC9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		11CC3D381CB6549600828DC9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		11CC3D391CB6549600828DC9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		11CC3D381CB6549600828DC9 /* AFMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFMapViewController.h; sourceTree = "<group>"; };
+		11CC3D391CB6549600828DC9 /* AFMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFMapViewController.m; sourceTree = "<group>"; };
 		11CC3D3C1CB6549600828DC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11CC3D3E1CB6549600828DC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11CC3D411CB6549600828DC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11CC3D431CB6549600828DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11CC3D491CB6555600828DC9 /* AFServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServerManager.h; sourceTree = "<group>"; };
 		11CC3D4A1CB6555600828DC9 /* AFServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFServerManager.m; sourceTree = "<group>"; };
+		11CC3D4F1CB657DF00828DC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11CC3D501CB657DF00828DC9 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +48,7 @@
 		11CC3D261CB6549600828DC9 = {
 			isa = PBXGroup;
 			children = (
+				11CC3D4F1CB657DF00828DC9 /* MapKit.framework */,
 				11CC3D311CB6549600828DC9 /* MapTinkoffPartners */,
 				11CC3D301CB6549600828DC9 /* Products */,
 			);
@@ -65,8 +69,8 @@
 				11CC3D4D1CB6556700828DC9 /* Networking Extensions */,
 				11CC3D351CB6549600828DC9 /* AppDelegate.h */,
 				11CC3D361CB6549600828DC9 /* AppDelegate.m */,
-				11CC3D381CB6549600828DC9 /* ViewController.h */,
-				11CC3D391CB6549600828DC9 /* ViewController.m */,
+				11CC3D381CB6549600828DC9 /* AFMapViewController.h */,
+				11CC3D391CB6549600828DC9 /* AFMapViewController.m */,
 				11CC3D3B1CB6549600828DC9 /* Main.storyboard */,
 				11CC3D3E1CB6549600828DC9 /* Assets.xcassets */,
 				11CC3D401CB6549600828DC9 /* LaunchScreen.storyboard */,
@@ -171,7 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11CC3D3A1CB6549600828DC9 /* ViewController.m in Sources */,
+				11CC3D3A1CB6549600828DC9 /* AFMapViewController.m in Sources */,
 				11CC3D4B1CB6555600828DC9 /* AFServerManager.m in Sources */,
 				11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */,
 				11CC3D341CB6549600828DC9 /* main.m in Sources */,

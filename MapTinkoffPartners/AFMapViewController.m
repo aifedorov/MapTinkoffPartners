@@ -6,13 +6,14 @@
 //  Copyright © 2016 Home. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "AFMapViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface ViewController ()
+@interface AFMapViewController ()
 
 @end
 
-@implementation ViewController
+@implementation AFMapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
