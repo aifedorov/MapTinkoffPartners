@@ -13,6 +13,7 @@
 		11CC3D3D1CB6549600828DC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC3D3B1CB6549600828DC9 /* Main.storyboard */; };
 		11CC3D3F1CB6549600828DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11CC3D3E1CB6549600828DC9 /* Assets.xcassets */; };
 		11CC3D421CB6549600828DC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC3D401CB6549600828DC9 /* LaunchScreen.storyboard */; };
+		11CC3D4B1CB6555600828DC9 /* AFServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D4A1CB6555600828DC9 /* AFServerManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		11CC3D3E1CB6549600828DC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11CC3D411CB6549600828DC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11CC3D431CB6549600828DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11CC3D491CB6555600828DC9 /* AFServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServerManager.h; sourceTree = "<group>"; };
+		11CC3D4A1CB6555600828DC9 /* AFServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFServerManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 		11CC3D311CB6549600828DC9 /* MapTinkoffPartners */ = {
 			isa = PBXGroup;
 			children = (
+				11CC3D4E1CB6559B00828DC9 /* Models */,
+				11CC3D4D1CB6556700828DC9 /* Networking Extensions */,
 				11CC3D351CB6549600828DC9 /* AppDelegate.h */,
 				11CC3D361CB6549600828DC9 /* AppDelegate.m */,
 				11CC3D381CB6549600828DC9 /* ViewController.h */,
@@ -77,6 +82,22 @@
 				11CC3D331CB6549600828DC9 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		11CC3D4D1CB6556700828DC9 /* Networking Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11CC3D491CB6555600828DC9 /* AFServerManager.h */,
+				11CC3D4A1CB6555600828DC9 /* AFServerManager.m */,
+			);
+			name = "Networking Extensions";
+			sourceTree = "<group>";
+		};
+		11CC3D4E1CB6559B00828DC9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11CC3D3A1CB6549600828DC9 /* ViewController.m in Sources */,
+				11CC3D4B1CB6555600828DC9 /* AFServerManager.m in Sources */,
 				11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */,
 				11CC3D341CB6549600828DC9 /* main.m in Sources */,
 			);
