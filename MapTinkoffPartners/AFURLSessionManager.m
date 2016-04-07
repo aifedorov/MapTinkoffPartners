@@ -38,4 +38,18 @@
     return self;
 }
 
+- (void) fetchFeed {
+    NSString *requestString = @"http://bookapi.bignerdranch.com/courses.json";
+    NSURL *url = [NSURL URLWithString:requestString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSString *json = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", json);
+    }];
+    
+    [dataTask resume];
+}
+
 @end

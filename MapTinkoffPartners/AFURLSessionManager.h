@@ -10,6 +10,9 @@
 
 @interface AFURLSessionManager : NSObject
 
-- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
+- (instancetype)init;
+- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
+
+- (void) fetchFeed;
 
 @end
