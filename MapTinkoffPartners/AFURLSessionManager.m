@@ -56,8 +56,17 @@
     
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        NSString *json = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", json);
+        id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        if ([result isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *partners = result[@"payload"];
+            
+            NSError  *errorParse;
+            NSData   *nameData      = [NSJSONSerialization dataWithJSONObject:[partners valueForKey:@"name"] options:0 error:&errorParse];
+            
+            NSString *nameString = [[NSString alloc] initWithData:nameData encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"%@", nameString);
+        }
     }];
     
     [dataTask resume];

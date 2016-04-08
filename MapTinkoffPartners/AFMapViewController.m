@@ -25,8 +25,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -66,7 +69,6 @@
     }
 }
 
-
 #pragma mark - Private methods
 
 - (void)initialazeFetchedResultController {
@@ -89,7 +91,6 @@
         NSLog(@"Failed to initialize FetchedResultsController: %@\n%@", [error localizedDescription], [error userInfo]);
     }
 }
-
 
 - (void)updateUserLocation {
     
