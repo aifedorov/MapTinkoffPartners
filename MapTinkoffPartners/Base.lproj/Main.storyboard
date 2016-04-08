@@ -7,7 +7,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cpd-gf-44q">
             <objects>
-                <navigationController id="BgK-pC-Ram" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="rootNavigationController" id="BgK-pC-Ram" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="npw-tg-foB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-184" y="376"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Tinkoff Partners-->
         <scene sceneID="hQ1-XZ-cZA">
             <objects>
                 <viewController id="KNh-k6-Sps" customClass="AFMapViewController" sceneMemberID="viewController">
@@ -262,7 +262,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Aox-yy-FNr"/>
+                    <navigationItem key="navigationItem" title="Tinkoff Partners" id="Aox-yy-FNr"/>
                     <connections>
                         <outlet property="currentLocationButton" destination="Bxs-pU-Pa8" id="m5L-NI-dOV"/>
                         <outlet property="mapView" destination="HLb-pX-Hx7" id="7W2-gW-Vvz"/>

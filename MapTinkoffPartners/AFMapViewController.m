@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import <MapKit/MapKit.h>
 
-@interface AFMapViewController () <CLLocationManagerDelegate>
+@interface AFMapViewController () <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *plusZoomButton;
 @property (weak, nonatomic) IBOutlet UIButton *minusZoomButton;
@@ -71,13 +71,23 @@
 
 - (void)initialazeFetchedResultController {
     
-//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
     
-//    NSEntityDescription *description = [NSEntityDescription entityForName:@"Partner" inManagedObjectContext:];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"Partner" inManagedObjectContext:self.managedObjectContext];
     
-//    [request setEntity:description];
-//    [request setResultType:NSDictionaryResultType];
-
+    [request setEntity:description];
+    [request setResultType:NSDictionaryResultType];
+    
+    self.fetchedResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
+    [self.fetchedResultController setDelegate:self];
+    
+    NSError *error = nil;
+    [self.fetchedResultController performFetch:&error];
+    
+    if (error) {
+        NSLog(@"Failed to initialize FetchedResultsController: %@\n%@", [error localizedDescription], [error userInfo]);
+    }
 }
 
 

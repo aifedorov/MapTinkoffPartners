@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AFURLSessionManager.h"
+#import "AFMapViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,28 +30,40 @@
 //    [manager fetchPartners:requestString];
     
     
-    NSManagedObject *partner = [NSEntityDescription insertNewObjectForEntityForName:@"Partner" inManagedObjectContext:self.managedObjectContext];
+//    NSManagedObject *partner = [NSEntityDescription insertNewObjectForEntityForName:@"Partner" inManagedObjectContext:self.managedObjectContext];
+//    
+//    [partner setValue:@"MTS" forKey:@"idPartner"];
+//    
+//    [self saveContext];
+//    
+//    
+//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+//    
+//    NSEntityDescription *description = [NSEntityDescription entityForName:@"Partner" inManagedObjectContext:self.managedObjectContext];
+//    
+//    [request setEntity:description];
+//    [request setResultType:NSDictionaryResultType];
+//    
+//    NSError *requestError = nil;
+//    NSArray *resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+//    if (requestError) {
+//        NSLog(@"%@", [requestError localizedDescription]);
+//    }
+//    
+//    NSLog(@"%@", resultArray);
     
-    [partner setValue:@"MTS" forKey:@"idPartner"];
     
-    [self saveContext];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
+    UINavigationController *rootNavigatinCintroller = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"rootNavigationController"];
     
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    AFMapViewController *viewController = (AFMapViewController *)[rootNavigatinCintroller topViewController];
     
-    NSEntityDescription *description = [NSEntityDescription entityForName:@"Partner" inManagedObjectContext:self.managedObjectContext];
-    
-    [request setEntity:description];
-    [request setResultType:NSDictionaryResultType];
-    
-    NSError *requestError = nil;
-    NSArray *resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
-    if (requestError) {
-        NSLog(@"%@", [requestError localizedDescription]);
+    if ([viewController isKindOfClass:[AFMapViewController class]]) {
+        [viewController setManagedObjectContext:self.managedObjectContext];
     }
     
-    NSLog(@"%@", resultArray);
-    
+    [self.window setRootViewController:rootNavigatinCintroller];
     return YES;
 }
 

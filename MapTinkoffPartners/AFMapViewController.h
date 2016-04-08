@@ -13,6 +13,8 @@
 @interface AFMapViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 
 @end
 
