@@ -9,12 +9,13 @@
 #import "AFMapViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface AFMapViewController ()
+@interface AFMapViewController () <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *plusZoomButton;
 @property (weak, nonatomic) IBOutlet UIButton *minusZoomButton;
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -23,9 +24,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     [self.plusZoomButton setBackgroundImage:[self imageWithColor:[UIColor darkGrayColor]] forState:UIControlStateHighlighted];
     [self.minusZoomButton setBackgroundImage:[self imageWithColor:[UIColor darkGrayColor]] forState:UIControlStateHighlighted];
-     [self.currentLocationButton setBackgroundImage:[self imageWithColor:[UIColor darkGrayColor]] forState:UIControlStateHighlighted];
+    [self.currentLocationButton setBackgroundImage:[self imageWithColor:[UIColor darkGrayColor]] forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,7 +45,7 @@
 
 #pragma mark - Actions
 - (IBAction)centerMapOnUserButtonClicked:(id)sender {
-    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    [self updateUserLocation];
 }
 
 - (IBAction)zoomOut:(id)sender {
@@ -60,6 +69,28 @@
 
 
 #pragma mark - Private methods
+
+- (void)updateUserLocation {
+    
+    if (!self.locationManager) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+    }
+    
+    CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
+    
+    if (authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        
+        [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+        
+    } else {
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        [self.locationManager startUpdatingLocation];
+    }
+}
 
 - (UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
