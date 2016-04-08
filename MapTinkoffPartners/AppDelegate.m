@@ -28,12 +28,28 @@
 //    
 //    [manager fetchPartners:requestString];
     
-//    
+    
 //    NSManagedObject *partner = [NSEntityDescription insertNewObjectForEntityForName:@"Partner" inManagedObjectContext:self.managedObjectContext];
 //    
 //    [partner setValue:@"MTS" forKey:@"idPartner"];
 //    
 //    [self saveContext];
+//    
+//    
+//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+//    
+//    NSEntityDescription *description = [NSEntityDescription entityForName:@"Partner" inManagedObjectContext:self.managedObjectContext];
+//    
+//    [request setEntity:description];
+//    [request setResultType:NSDictionaryResultType];
+//    
+//    NSError *requestError = nil;
+//    NSArray *resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+//    if (requestError) {
+//        NSLog(@"%@", [requestError localizedDescription]);
+//    }
+//    
+//    NSLog(@"%@", resultArray);
     
     return YES;
 }

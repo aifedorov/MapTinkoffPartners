@@ -19,6 +19,10 @@
 		11CC3D7C1CB6AB9A00828DC9 /* AFPlusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D7B1CB6AB9A00828DC9 /* AFPlusView.m */; };
 		11CC3D7F1CB6ABA900828DC9 /* AFMinusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D7E1CB6ABA900828DC9 /* AFMinusView.m */; };
 		11CC3D831CB6EA5700828DC9 /* AFCurentLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D821CB6EA5600828DC9 /* AFCurentLocationView.m */; };
+		11CC3D8C1CB7BBCA00828DC9 /* DepositionPoint+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D851CB7BBCA00828DC9 /* DepositionPoint+CoreDataProperties.m */; };
+		11CC3D8D1CB7BBCA00828DC9 /* DepositionPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D871CB7BBCA00828DC9 /* DepositionPoint.m */; };
+		11CC3D8E1CB7BBCA00828DC9 /* Partner+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D891CB7BBCA00828DC9 /* Partner+CoreDataProperties.m */; };
+		11CC3D8F1CB7BBCA00828DC9 /* Partner.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D8B1CB7BBCA00828DC9 /* Partner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,14 @@
 		11CC3D7E1CB6ABA900828DC9 /* AFMinusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFMinusView.m; sourceTree = "<group>"; };
 		11CC3D811CB6EA5600828DC9 /* AFCurentLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCurentLocationView.h; sourceTree = "<group>"; };
 		11CC3D821CB6EA5600828DC9 /* AFCurentLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFCurentLocationView.m; sourceTree = "<group>"; };
+		11CC3D841CB7BBCA00828DC9 /* DepositionPoint+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DepositionPoint+CoreDataProperties.h"; sourceTree = "<group>"; };
+		11CC3D851CB7BBCA00828DC9 /* DepositionPoint+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DepositionPoint+CoreDataProperties.m"; sourceTree = "<group>"; };
+		11CC3D861CB7BBCA00828DC9 /* DepositionPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositionPoint.h; sourceTree = "<group>"; };
+		11CC3D871CB7BBCA00828DC9 /* DepositionPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositionPoint.m; sourceTree = "<group>"; };
+		11CC3D881CB7BBCA00828DC9 /* Partner+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Partner+CoreDataProperties.h"; sourceTree = "<group>"; };
+		11CC3D891CB7BBCA00828DC9 /* Partner+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Partner+CoreDataProperties.m"; sourceTree = "<group>"; };
+		11CC3D8A1CB7BBCA00828DC9 /* Partner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Partner.h; sourceTree = "<group>"; };
+		11CC3D8B1CB7BBCA00828DC9 /* Partner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Partner.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +125,14 @@
 		11CC3D4E1CB6559B00828DC9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				11CC3D841CB7BBCA00828DC9 /* DepositionPoint+CoreDataProperties.h */,
+				11CC3D851CB7BBCA00828DC9 /* DepositionPoint+CoreDataProperties.m */,
+				11CC3D861CB7BBCA00828DC9 /* DepositionPoint.h */,
+				11CC3D871CB7BBCA00828DC9 /* DepositionPoint.m */,
+				11CC3D881CB7BBCA00828DC9 /* Partner+CoreDataProperties.h */,
+				11CC3D891CB7BBCA00828DC9 /* Partner+CoreDataProperties.m */,
+				11CC3D8A1CB7BBCA00828DC9 /* Partner.h */,
+				11CC3D8B1CB7BBCA00828DC9 /* Partner.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -201,13 +221,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11CC3D8F1CB7BBCA00828DC9 /* Partner.m in Sources */,
 				11CC3D7F1CB6ABA900828DC9 /* AFMinusView.m in Sources */,
 				11CC3D3A1CB6549600828DC9 /* AFMapViewController.m in Sources */,
+				11CC3D8E1CB7BBCA00828DC9 /* Partner+CoreDataProperties.m in Sources */,
+				11CC3D8C1CB7BBCA00828DC9 /* DepositionPoint+CoreDataProperties.m in Sources */,
 				11CC3D4B1CB6555600828DC9 /* AFURLSessionManager.m in Sources */,
 				11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */,
 				11CC3D341CB6549600828DC9 /* main.m in Sources */,
 				11CC3D831CB6EA5700828DC9 /* AFCurentLocationView.m in Sources */,
 				11CC3D791CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld in Sources */,
+				11CC3D8D1CB7BBCA00828DC9 /* DepositionPoint.m in Sources */,
 				11CC3D7C1CB6AB9A00828DC9 /* AFPlusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
