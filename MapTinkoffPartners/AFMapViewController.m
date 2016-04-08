@@ -7,6 +7,7 @@
 //
 
 #import "AFMapViewController.h"
+#import <CoreData/CoreData.h>
 #import <MapKit/MapKit.h>
 
 @interface AFMapViewController () <CLLocationManagerDelegate>
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 
 @end
 
@@ -66,6 +68,18 @@
 
 
 #pragma mark - Private methods
+
+- (void)initialazeFetchedResultController {
+    
+//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+//    NSEntityDescription *description = [NSEntityDescription entityForName:@"Partner" inManagedObjectContext:];
+    
+//    [request setEntity:description];
+//    [request setResultType:NSDictionaryResultType];
+
+}
+
 
 - (void)updateUserLocation {
     

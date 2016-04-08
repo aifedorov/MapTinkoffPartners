@@ -19,6 +19,6 @@
 @dynamic workHours;
 @dynamic addressInfo;
 @dynamic fullAddress;
-@dynamic partner_relationship;
+@dynamic partner;
 
 @end

@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *workHours;
 @property (nullable, nonatomic, retain) NSString *addressInfo;
 @property (nullable, nonatomic, retain) NSString *fullAddress;
-@property (nullable, nonatomic, retain) NSManagedObject *partner_relationship;
+@property (nullable, nonatomic, retain) Partner *partner;
 
 @end
 

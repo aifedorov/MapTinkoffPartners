@@ -7,6 +7,7 @@
 //
 
 #import "DepositionPoint.h"
+#import "Partner.h"
 
 @implementation DepositionPoint
 

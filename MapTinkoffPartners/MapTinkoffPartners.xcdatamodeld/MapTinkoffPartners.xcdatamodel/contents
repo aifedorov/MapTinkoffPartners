@@ -7,7 +7,7 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="partnerName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workHours" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="partner_relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Partner" inverseName="depos_relationship" inverseEntity="Partner" syncable="YES"/>
+        <relationship name="partner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Partner" inverseName="depospoint" inverseEntity="Partner" syncable="YES"/>
     </entity>
     <entity name="Partner" representedClassName="Partner" syncable="YES">
         <attribute name="depositionDuration" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,10 +24,10 @@
         <attribute name="picture" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pointType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="depos_relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DepositionPoint" inverseName="partner_relationship" inverseEntity="DepositionPoint" syncable="YES"/>
+        <relationship name="depospoint" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DepositionPoint" inverseName="partner" inverseEntity="DepositionPoint" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DepositionPoint" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="DepositionPoint" positionX="-56" positionY="-0" width="128" height="148"/>
         <element name="Partner" positionX="-297" positionY="-36" width="128" height="268"/>
     </elements>
 </model>

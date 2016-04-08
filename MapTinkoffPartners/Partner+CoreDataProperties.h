@@ -29,16 +29,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *moneyMin;
 @property (nullable, nonatomic, retain) NSNumber *moneyMax;
 @property (nullable, nonatomic, retain) NSNumber *hasPreferentialDeposition;
-@property (nullable, nonatomic, retain) NSSet<DepositionPoint *> *depos_relationship;
+@property (nullable, nonatomic, retain) NSSet<DepositionPoint *> *depospoint;
 
 @end
 
 @interface Partner (CoreDataGeneratedAccessors)
 
-- (void)addDepos_relationshipObject:(DepositionPoint *)value;
-- (void)removeDepos_relationshipObject:(DepositionPoint *)value;
-- (void)addDepos_relationship:(NSSet<DepositionPoint *> *)values;
-- (void)removeDepos_relationship:(NSSet<DepositionPoint *> *)values;
+- (void)addDepospointObject:(DepositionPoint *)value;
+- (void)removeDepospointObject:(DepositionPoint *)value;
+- (void)addDepospoint:(NSSet<DepositionPoint *> *)values;
+- (void)removeDepospoint:(NSSet<DepositionPoint *> *)values;
 
 @end
 

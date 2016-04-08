@@ -27,6 +27,6 @@
 @dynamic moneyMin;
 @dynamic moneyMax;
 @dynamic hasPreferentialDeposition;
-@dynamic depos_relationship;
+@dynamic depospoint;
 
 @end
