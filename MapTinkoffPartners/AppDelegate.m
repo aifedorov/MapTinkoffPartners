@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "AFURLSessionManager.h"
+#import "AFWebservice.h"
 #import "AFMapViewController.h"
 
 @interface AppDelegate ()
@@ -20,15 +20,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    NSString *baseUrlString = @"https://api.tinkoff.ru/v1/";
-    NSURL *baseUrl = [NSURL URLWithString:baseUrlString];
-    
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithBaseURL:baseUrl];
-    
-    NSString *requestString = @"deposition_partners?accountType=Credit";
-    
-    [manager fetchPartners:requestString];
-    
+//    AFWebservice *webservice = [[AFWebservice alloc] init];
+//    [webservice fetchAllPartners:^(NSArray *partners) {
+//        
+//    }];
     
 //    NSManagedObject *partner = [NSEntityDescription insertNewObjectForEntityForName:@"Partner" inManagedObjectContext:self.managedObjectContext];
 //    

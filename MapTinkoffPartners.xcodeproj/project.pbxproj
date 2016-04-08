@@ -13,7 +13,7 @@
 		11CC3D3D1CB6549600828DC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC3D3B1CB6549600828DC9 /* Main.storyboard */; };
 		11CC3D3F1CB6549600828DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11CC3D3E1CB6549600828DC9 /* Assets.xcassets */; };
 		11CC3D421CB6549600828DC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC3D401CB6549600828DC9 /* LaunchScreen.storyboard */; };
-		11CC3D4B1CB6555600828DC9 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D4A1CB6555600828DC9 /* AFURLSessionManager.m */; };
+		11CC3D4B1CB6555600828DC9 /* AFWebservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D4A1CB6555600828DC9 /* AFWebservice.m */; };
 		11CC3D501CB657DF00828DC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CC3D4F1CB657DF00828DC9 /* MapKit.framework */; };
 		11CC3D791CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D771CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld */; };
 		11CC3D7C1CB6AB9A00828DC9 /* AFPlusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D7B1CB6AB9A00828DC9 /* AFPlusView.m */; };
@@ -36,8 +36,8 @@
 		11CC3D3E1CB6549600828DC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11CC3D411CB6549600828DC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11CC3D431CB6549600828DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11CC3D491CB6555600828DC9 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
-		11CC3D4A1CB6555600828DC9 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		11CC3D491CB6555600828DC9 /* AFWebservice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFWebservice.h; sourceTree = "<group>"; };
+		11CC3D4A1CB6555600828DC9 /* AFWebservice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFWebservice.m; sourceTree = "<group>"; };
 		11CC3D4F1CB657DF00828DC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		11CC3D781CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MapTinkoffPartners.xcdatamodel; sourceTree = "<group>"; };
 		11CC3D7A1CB6AB9A00828DC9 /* AFPlusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPlusView.h; sourceTree = "<group>"; };
@@ -116,8 +116,8 @@
 		11CC3D4D1CB6556700828DC9 /* Networking Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				11CC3D491CB6555600828DC9 /* AFURLSessionManager.h */,
-				11CC3D4A1CB6555600828DC9 /* AFURLSessionManager.m */,
+				11CC3D491CB6555600828DC9 /* AFWebservice.h */,
+				11CC3D4A1CB6555600828DC9 /* AFWebservice.m */,
 			);
 			name = "Networking Extensions";
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 				11CC3D3A1CB6549600828DC9 /* AFMapViewController.m in Sources */,
 				11CC3D9A1CB7EE9000828DC9 /* Partner+CoreDataProperties.m in Sources */,
 				11CC3D981CB7EE9000828DC9 /* DepositionPoint+CoreDataProperties.m in Sources */,
-				11CC3D4B1CB6555600828DC9 /* AFURLSessionManager.m in Sources */,
+				11CC3D4B1CB6555600828DC9 /* AFWebservice.m in Sources */,
 				11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */,
 				11CC3D341CB6549600828DC9 /* main.m in Sources */,
 				11CC3D831CB6EA5700828DC9 /* AFCurentLocationView.m in Sources */,
