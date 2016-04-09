@@ -13,7 +13,7 @@
 
 + (Partner *)findOrCreatePartnerWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
-//    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"identifier = %@", identifier];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"name = %@", identifier];
     NSError *error = nil;
     NSArray *result = [context executeFetchRequest:fetchRequest error:&error];
     if (error) {
@@ -23,7 +23,6 @@
         return result.lastObject;
     } else {
         Partner *partner = [self insertNewObjectIntoContext:context];
-//        partner.identifier = identifier;
         return partner;
     }
 }

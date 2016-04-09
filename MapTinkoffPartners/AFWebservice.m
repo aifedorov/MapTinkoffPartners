@@ -27,7 +27,7 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
     NSURL *requestUrl = [NSURL URLWithString:requestUrlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:requestUrl];
     
-    NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         if (error) {
             NSLog(@"error: %@", error.localizedDescription);
@@ -44,15 +44,6 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
     }];
     
     [dataTask resume];
-}
-
-#pragma mark - Private methods
-
-- (NSString *)dictionaryEncodingToString:(NSDictionary *)dict{
-    
-    NSError *errorParse;
-    NSData *nameData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&errorParse];
-    return [[NSString alloc] initWithData:nameData encoding:NSUTF8StringEncoding];
 }
 
 @end

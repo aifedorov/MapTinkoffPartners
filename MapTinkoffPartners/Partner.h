@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Partner : NSManagedObject
 
-+ (Partner *)findOrCreatePartnerWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context;
++ (Partner *)findOrCreatePartnerWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context ;
 + (id)entityName;
 + (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext*)context;
 
