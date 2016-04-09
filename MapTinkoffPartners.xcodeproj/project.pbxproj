@@ -23,6 +23,7 @@
 		11CC3D991CB7EE9000828DC9 /* DepositionPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D931CB7EE9000828DC9 /* DepositionPoint.m */; };
 		11CC3D9A1CB7EE9000828DC9 /* Partner+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D951CB7EE9000828DC9 /* Partner+CoreDataProperties.m */; };
 		11CC3D9B1CB7EE9000828DC9 /* Partner.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D971CB7EE9000828DC9 /* Partner.m */; };
+		11CC3D9E1CB82FFA00828DC9 /* Importer.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D9D1CB82FFA00828DC9 /* Importer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		11CC3D951CB7EE9000828DC9 /* Partner+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Partner+CoreDataProperties.m"; sourceTree = "<group>"; };
 		11CC3D961CB7EE9000828DC9 /* Partner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Partner.h; sourceTree = "<group>"; };
 		11CC3D971CB7EE9000828DC9 /* Partner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Partner.m; sourceTree = "<group>"; };
+		11CC3D9C1CB82FFA00828DC9 /* Importer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Importer.h; sourceTree = "<group>"; };
+		11CC3D9D1CB82FFA00828DC9 /* Importer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Importer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				11CC3D431CB6549600828DC9 /* Info.plist */,
 				11CC3D321CB6549600828DC9 /* Supporting Files */,
 				11CC3D771CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld */,
+				11CC3D9C1CB82FFA00828DC9 /* Importer.h */,
+				11CC3D9D1CB82FFA00828DC9 /* Importer.m */,
 			);
 			path = MapTinkoffPartners;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 				11CC3D4B1CB6555600828DC9 /* AFWebservice.m in Sources */,
 				11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */,
 				11CC3D341CB6549600828DC9 /* main.m in Sources */,
+				11CC3D9E1CB82FFA00828DC9 /* Importer.m in Sources */,
 				11CC3D831CB6EA5700828DC9 /* AFCurentLocationView.m in Sources */,
 				11CC3D791CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld in Sources */,
 				11CC3D991CB7EE9000828DC9 /* DepositionPoint.m in Sources */,

@@ -15,7 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Partner : NSManagedObject
 
-// Insert code here to declare functionality of your managed object subclass
++ (Partner *)findOrCreatePartnerWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context;
++ (id)entityName;
++ (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext*)context;
+
+- (void)loadFromDictionary:(NSDictionary *)dictionary;
 
 @end
 

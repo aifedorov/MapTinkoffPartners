@@ -11,6 +11,50 @@
 
 @implementation Partner
 
-// Insert code here to add functionality to your managed object subclass
++ (Partner *)findOrCreatePartnerWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+//    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"identifier = %@", identifier];
+    NSError *error = nil;
+    NSArray *result = [context executeFetchRequest:fetchRequest error:&error];
+    if (error) {
+        NSLog(@"error: %@", error.localizedDescription);
+    }
+    if (result.lastObject) {
+        return result.lastObject;
+    } else {
+        Partner *partner = [self insertNewObjectIntoContext:context];
+//        partner.identifier = identifier;
+        return partner;
+    }
+}
+
++ (id)entityName {
+    return NSStringFromClass(self);
+}
+
++ (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext*)context {
+    return [NSEntityDescription insertNewObjectForEntityForName:[self entityName] inManagedObjectContext:context];
+}
+
+- (void)loadFromDictionary:(NSDictionary *)dictionary {
+     self.idPartner = dictionary[@"id"];
+     self.name = dictionary[@"name"];
+     self.picture = dictionary[@"picture"];
+     self.url = dictionary[@"url"];
+     self.depositionDuration = dictionary[@"depositionDuration"];
+     self.limitations = dictionary[@"limitations"];
+     self.pointType = dictionary[@"pointType"];
+     self.descriptionPartner = dictionary[@"description"];
+    
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    self.hasLocations = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"hasLocations"]]];
+    self.isMomentary = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"isMomentary"]]];
+    self.hasPreferentialDeposition = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"hasPreferentialDeposition"]]];
+    self.externalPartnerId = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"externalPartnerId"]]];
+    self.moneyMin = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"moneyMin"]]];
+    self.moneyMax = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"moneyMax"]]];
+}
 
 @end
