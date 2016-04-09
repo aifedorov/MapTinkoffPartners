@@ -9,6 +9,7 @@
 #import "AFMapViewController.h"
 #import <CoreData/CoreData.h>
 #import <MapKit/MapKit.h>
+#import "Partner.h"
 
 @interface AFMapViewController () <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate>
 
@@ -25,10 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -39,11 +36,11 @@
     [self.currentLocationButton setBackgroundImage:[self imageWithColor:[UIColor darkGrayColor]] forState:UIControlStateHighlighted];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark - Actions
 - (IBAction)centerMapOnUserButtonClicked:(id)sender {
@@ -75,7 +72,7 @@
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     
-    NSEntityDescription *description = [NSEntityDescription entityForName:@"Partner" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *description = [NSEntityDescription entityForName:[Partner entityName] inManagedObjectContext:self.managedObjectContext];
     
     [request setEntity:description];
     [request setResultType:NSDictionaryResultType];

@@ -24,6 +24,7 @@
 		11CC3D9A1CB7EE9000828DC9 /* Partner+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D951CB7EE9000828DC9 /* Partner+CoreDataProperties.m */; };
 		11CC3D9B1CB7EE9000828DC9 /* Partner.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D971CB7EE9000828DC9 /* Partner.m */; };
 		11CC3D9E1CB82FFA00828DC9 /* AFImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D9D1CB82FFA00828DC9 /* AFImporter.m */; };
+		11CC3DA11CB90E2400828DC9 /* AFPersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3DA01CB90E2400828DC9 /* AFPersistentStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		11CC3D971CB7EE9000828DC9 /* Partner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Partner.m; sourceTree = "<group>"; };
 		11CC3D9C1CB82FFA00828DC9 /* AFImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImporter.h; sourceTree = "<group>"; };
 		11CC3D9D1CB82FFA00828DC9 /* AFImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImporter.m; sourceTree = "<group>"; };
+		11CC3D9F1CB90E2400828DC9 /* AFPersistentStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPersistentStack.h; sourceTree = "<group>"; };
+		11CC3DA01CB90E2400828DC9 /* AFPersistentStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPersistentStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 				11CC3D431CB6549600828DC9 /* Info.plist */,
 				11CC3D321CB6549600828DC9 /* Supporting Files */,
 				11CC3D771CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld */,
+				11CC3D9F1CB90E2400828DC9 /* AFPersistentStack.h */,
+				11CC3DA01CB90E2400828DC9 /* AFPersistentStack.m */,
 			);
 			path = MapTinkoffPartners;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 			files = (
 				11CC3D9B1CB7EE9000828DC9 /* Partner.m in Sources */,
 				11CC3D7F1CB6ABA900828DC9 /* AFMinusView.m in Sources */,
+				11CC3DA11CB90E2400828DC9 /* AFPersistentStack.m in Sources */,
 				11CC3D3A1CB6549600828DC9 /* AFMapViewController.m in Sources */,
 				11CC3D9A1CB7EE9000828DC9 /* Partner+CoreDataProperties.m in Sources */,
 				11CC3D981CB7EE9000828DC9 /* DepositionPoint+CoreDataProperties.m in Sources */,
