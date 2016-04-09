@@ -27,10 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    for (NSManagedObject* object in  [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
-        NSLog(@"%@", [object valueForKey:@"partnerName"]);
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,6 +69,17 @@
         [self.mapView setRegion:theRegion animated:YES];
     }
 }
+
+- (IBAction)searchPartners:(id)sender {
+    
+    
+    [self.importer importDepositionPoints:55.755786 longitude:37.617633 radius:1000];
+    
+    for (NSManagedObject* object in  [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
+        NSLog(@"%@", [object valueForKey:@"partnerName"]);
+    }
+}
+
 
 #pragma mark - Private methods
 @synthesize fetchedResultsController = _fetchedResultsController;

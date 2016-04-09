@@ -262,7 +262,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Tinkoff Partners" id="Aox-yy-FNr"/>
+                    <navigationItem key="navigationItem" title="Tinkoff Partners" id="Aox-yy-FNr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="74E-DA-F2W">
+                            <connections>
+                                <action selector="searchPartners:" destination="KNh-k6-Sps" id="v7H-my-7lw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="currentLocationButton" destination="Bxs-pU-Pa8" id="m5L-NI-dOV"/>
                         <outlet property="mapView" destination="HLb-pX-Hx7" id="7W2-gW-Vvz"/>
