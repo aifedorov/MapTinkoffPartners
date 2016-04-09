@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "AFWebservice.h"
 #import "Partner.h"
+#import "DepositionPoint.h"
 
 @interface AFImporter ()
 
@@ -30,7 +31,7 @@
     return self;
 }
 
-- (void)import {
+- (void)importPartners {
     [self.webservice fetchAllPartners:^(NSArray *partners) {
         [self.context performBlock:^{
             for (NSDictionary *partnerDict in partners) {
@@ -48,13 +49,23 @@
     }];
 }
 
-#pragma mark - Private methods
-
-- (NSString *)dictionaryEncodingToString:(NSDictionary *)dict{
-    
-    NSError *errorParse;
-    NSData *nameData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&errorParse];
-    return [[NSString alloc] initWithData:nameData encoding:NSUTF8StringEncoding];
+- (void)importDepositionPoints: (double)latitude longitude: (double)longitude radius: (NSInteger)radius {
+    [self.webservice fetchDepositonPointsOnLocation:latitude longitude:longitude radius:radius callback:^(NSArray *points) {
+        [self.context performBlock:^{
+            for (NSDictionary *partnerDict in points) {
+                NSString *identifier = [partnerDict valueForKey:@"partnerName"];
+                DepositionPoint *point = [DepositionPoint findOrCreateDepositionPointWithIdentifier:identifier inContext:self.context];
+                [point loadFromDictionary:partnerDict];
+                NSLog(@"%@", point.latitude);
+                
+                NSError *error = nil;
+                [self.context save:&error];
+                if (error) {
+                    NSLog(@"Error save context: %@", [error localizedDescription]);
+                }
+            }
+        }];
+    }];
 }
 
 @end

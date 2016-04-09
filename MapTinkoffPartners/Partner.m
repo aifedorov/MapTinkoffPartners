@@ -17,7 +17,7 @@
     NSError *error = nil;
     NSArray *result = [context executeFetchRequest:fetchRequest error:&error];
     if (error) {
-        NSLog(@"error: %@", error.localizedDescription);
+        NSLog(@"Error: %@", [error localizedDescription]);
     }
     if (result.lastObject) {
         return result.lastObject;
@@ -25,14 +25,6 @@
         Partner *partner = [self insertNewObjectIntoContext:context];
         return partner;
     }
-}
-
-+ (id)entityName {
-    return NSStringFromClass(self);
-}
-
-+ (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext*)context {
-    return [NSEntityDescription insertNewObjectForEntityForName:[self entityName] inManagedObjectContext:context];
 }
 
 - (void)loadFromDictionary:(NSDictionary *)dictionary {

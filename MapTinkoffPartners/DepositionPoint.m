@@ -11,6 +11,34 @@
 
 @implementation DepositionPoint
 
-// Insert code here to add functionality to your managed object subclass
++ (DepositionPoint *)findOrCreateDepositionPointWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"partnerName = %@", identifier];
+    NSError *error = nil;
+    NSArray *result = [context executeFetchRequest:fetchRequest error:&error];
+    if (error) {
+        NSLog(@"Error: %@", [error localizedDescription]);
+    }
+    if (result.lastObject) {
+        return result.lastObject;
+    } else {
+        DepositionPoint *depositionPoint = [self insertNewObjectIntoContext:context];
+        return depositionPoint;
+    }
+}
+
+- (void)loadFromDictionary:(NSDictionary *)dictionary {
+    self.partnerName = dictionary[@"partnerName"];
+    self.workHours = dictionary[@"workHours"];
+    self.addressInfo = dictionary[@"addressInfo"];
+    self.fullAddress = dictionary[@"fullAddress"];
+    
+    
+    NSDictionary *locationDict = dictionary[@"location"];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    self.latitude = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", locationDict[@"latitude"]]];
+    self.longitude = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", locationDict[@"longitude"]]];
+}
 
 @end

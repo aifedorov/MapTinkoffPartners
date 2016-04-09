@@ -10,7 +10,6 @@
 #import "AFMapViewController.h"
 #import "AFWebservice.h"
 #import "AFImporter.h"
-#import "Partner.h"
 #import "AFPersistentStack.h"
 
 @interface AppDelegate ()
@@ -26,7 +25,9 @@
     self.persistentStack = [[AFPersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
     self.webservice = [[AFWebservice alloc] init];
     self.importer = [[AFImporter alloc] initWithContext:self.persistentStack.backgroundManagedObjectContext webservice:self.webservice];
-    [self.importer import];
+    
+    [self.importer importPartners];
+    [self.importer importDepositionPoints:55.755786 longitude:37.617633 radius:1000];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     

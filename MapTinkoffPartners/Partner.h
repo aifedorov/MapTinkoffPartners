@@ -8,16 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "AFObjectModel.h"
 
 @class DepositionPoint;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Partner : NSManagedObject
+@interface Partner : AFObjectModel
 
 + (Partner *)findOrCreatePartnerWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context ;
-+ (id)entityName;
-+ (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext*)context;
 
 - (void)loadFromDictionary:(NSDictionary *)dictionary;
 

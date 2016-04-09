@@ -32,8 +32,9 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
     
-    for (NSManagedObject* object in [[self fetchedResultsController] fetchedObjects]) {
-        NSLog(@"%@", [object valueForKey:@"name"]);
+    
+    for (NSManagedObject* object in  [[self fetchedResultsController] fetchedObjects]) {
+        NSLog(@"%@", [object valueForKey:@"limitations"]);
     }
 }
 
@@ -49,6 +50,9 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 }
 
 #pragma mark - Actions

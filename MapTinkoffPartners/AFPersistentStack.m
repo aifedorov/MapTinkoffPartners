@@ -64,7 +64,7 @@
                                                                        options:nil
                                                                          error:&error];
     if (error) {
-        NSLog(@"error: %@", error.localizedDescription);
+        NSLog(@"Error: %@", [error localizedDescription]);
         NSLog(@"rm \"%@\"", self.storeURL.path);
     }
     

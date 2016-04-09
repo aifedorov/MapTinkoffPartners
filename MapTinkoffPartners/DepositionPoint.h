@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "AFObjectModel.h"
 
 @class Partner;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DepositionPoint : NSManagedObject
+@interface DepositionPoint : AFObjectModel
 
-// Insert code here to declare functionality of your managed object subclass
++ (DepositionPoint *)findOrCreateDepositionPointWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context ;
+
+- (void)loadFromDictionary:(NSDictionary *)dictionary;
 
 @end
 
