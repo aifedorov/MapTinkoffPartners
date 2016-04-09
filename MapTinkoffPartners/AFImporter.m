@@ -36,7 +36,13 @@
             for (NSDictionary *partnerDict in partners) {
                 NSString *identifier = [partnerDict valueForKey:@"name"];
                 Partner *partner = [Partner findOrCreatePartnerWithIdentifier:identifier inContext:self.context];
-                [partner loadFromDictionary:partnerDict];              
+                [partner loadFromDictionary:partnerDict];
+                
+                NSError *error = nil;
+                [self.context save:&error];
+                if (error) {
+                    NSLog(@"Error save context: %@", [error localizedDescription]);
+                }
             }
         }];
     }];

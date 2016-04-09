@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -26,6 +26,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    
+    for (NSManagedObject* object in [[self fetchedResultsController] fetchedObjects]) {
+        NSLog(@"%@", [object valueForKey:@"name"]);
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,26 +76,33 @@
 }
 
 #pragma mark - Private methods
+@synthesize fetchedResultsController = _fetchedResultsController;
 
-- (void)initialazeFetchedResultController {
+- (NSFetchedResultsController *)fetchedResultsController {
     
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *description = [NSEntityDescription entityForName:[Partner entityName] inManagedObjectContext:self.managedObjectContext];
-    
-    [request setEntity:description];
-    [request setResultType:NSDictionaryResultType];
-    
-    self.fetchedResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    
-    [self.fetchedResultController setDelegate:self];
-    
-    NSError *error = nil;
-    [self.fetchedResultController performFetch:&error];
-    
-    if (error) {
-        NSLog(@"Failed to initialize FetchedResultsController: %@\n%@", [error localizedDescription], [error userInfo]);
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
     }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:[Partner entityName] inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:@"name" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+ 
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.managedObjectContext
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    self.fetchedResultsController = theFetchedResultsController;
+    [self.fetchedResultsController setDelegate:self];
+    
+    return _fetchedResultsController;
 }
 
 - (void)updateUserLocation {
