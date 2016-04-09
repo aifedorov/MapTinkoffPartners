@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import <MapKit/MapKit.h>
 #import "Partner.h"
+#import "DepositionPoint.h"
 
 @interface AFMapViewController () <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate>
 
@@ -27,14 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    
-    
-    for (NSManagedObject* object in  [[self fetchedResultsController] fetchedObjects]) {
-        NSLog(@"%@", [object valueForKey:@"limitations"]);
+    for (NSManagedObject* object in  [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
+        NSLog(@"%@", [object valueForKey:@"partnerName"]);
     }
 }
 
@@ -82,7 +77,7 @@
 #pragma mark - Private methods
 @synthesize fetchedResultsController = _fetchedResultsController;
 
-- (NSFetchedResultsController *)fetchedResultsController {
+- (NSFetchedResultsController *)fetchedResultsController:(id)entityName sortBy:(NSString *)key {
     
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
@@ -90,11 +85,11 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:[Partner entityName] inManagedObjectContext:self.managedObjectContext];
+                                   entityForName:entityName inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:@"name" ascending:YES];
+                              initWithKey:key ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
  
     
@@ -105,6 +100,11 @@
                                                    cacheName:nil];
     self.fetchedResultsController = theFetchedResultsController;
     [self.fetchedResultsController setDelegate:self];
+    
+    NSError *error;
+    if (![_fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
     
     return _fetchedResultsController;
 }

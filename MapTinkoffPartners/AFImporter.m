@@ -56,7 +56,6 @@
                 NSString *identifier = [partnerDict valueForKey:@"partnerName"];
                 DepositionPoint *point = [DepositionPoint findOrCreateDepositionPointWithIdentifier:identifier inContext:self.context];
                 [point loadFromDictionary:partnerDict];
-                NSLog(@"%@", point.latitude);
                 
                 NSError *error = nil;
                 [self.context save:&error];

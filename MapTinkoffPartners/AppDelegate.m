@@ -71,7 +71,7 @@
     NSError *error = nil;
     [self.persistentStack.managedObjectContext save:&error];
     if (error) {
-        NSLog(@"error saving: %@", error.localizedDescription);
+        NSLog(@"Error saving: %@", error.localizedDescription);
     }
 }
 
