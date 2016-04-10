@@ -13,6 +13,7 @@
 #import "DepositionPoint.h"
 #import "AFMapViewGestureRecognizer.h"
 #import "AFImporter.h"
+#import "AFMapAnnotation.h"
 
 @interface AFMapViewController () <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate>
 
@@ -40,6 +41,9 @@
         [self updateLocationPartners];
     };
     [self.mapView addGestureRecognizer:tapInterceptor];
+    
+    [self setupRegionMoscow];
+    [self updateLocationPartners];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,7 +84,6 @@
     }
 }
 
-#pragma mark - Private methods
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 - (NSFetchedResultsController *)fetchedResultsController:(id)entityName sortBy:(NSString *)key {
@@ -110,14 +113,49 @@
     return _fetchedResultsController;
 }
 
+- (void)setupRegionMoscow {
+    MKCoordinateRegion moscowRegion = self.mapView.region;
+    
+    CLLocationCoordinate2D location;
+    location.latitude = 55.751244;
+    location.longitude = 37.618423;
+    
+    moscowRegion.center = location;
+    
+    moscowRegion.span.latitudeDelta = 0.2;
+    moscowRegion.span.longitudeDelta = 0.2;
+    
+    [self.mapView setRegion:moscowRegion animated:YES];
+}
+
 - (void)updateLocationPartners {
     
-    [self.importer importDepositionPoints:self.mapView.region.center.latitude longitude:self.mapView.region.center.longitude radius:1000 completionHandler:^{
+    MKMapRect visibleMapRect = self.mapView.visibleMapRect;
+    MKMapPoint cornerPoint = MKMapPointMake(visibleMapRect.origin.x, visibleMapRect.origin.y);
+
+    CLLocationCoordinate2D locationCornerPoint = MKCoordinateForMapPoint(cornerPoint);
+
+    CLLocation *locationVisibleRect = [[CLLocation alloc] initWithLatitude:locationCornerPoint.latitude longitude:locationCornerPoint.longitude];
+    CLLocation *locationcenterCoordinate = [[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
+    
+    CLLocationDistance radius = [locationcenterCoordinate distanceFromLocation:locationVisibleRect];
+    
+    [self.importer importDepositionPoints:self.mapView.region.center.latitude longitude:self.mapView.region.center.longitude radius:radius completionHandler:^{
         
-        for (NSManagedObject* object in [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
-            NSLog(@"%@", [object valueForKey:@"partnerName"]);
+        for (DepositionPoint* point in [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
+            
+            AFMapAnnotation *annotation = [[AFMapAnnotation alloc] init];
+            
+            annotation.title = [NSString stringWithFormat:@"%@", point.partnerName];
+            
+            CLLocationCoordinate2D location;
+            location.latitude = [point.latitude doubleValue];
+            location.longitude = [point.longitude doubleValue];
+            
+            [annotation setCoordinate:location];
+            
+            [self.mapView addAnnotation:annotation];
         }
-        
     }];
 }
 
