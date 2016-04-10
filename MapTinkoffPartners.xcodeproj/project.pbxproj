@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1105F5191CBA8CAE007690F1 /* AFMapViewGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1105F5181CBA8CAE007690F1 /* AFMapViewGestureRecognizer.m */; };
 		11CC3D341CB6549600828DC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D331CB6549600828DC9 /* main.m */; };
 		11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D361CB6549600828DC9 /* AppDelegate.m */; };
 		11CC3D3A1CB6549600828DC9 /* AFMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D391CB6549600828DC9 /* AFMapViewController.m */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1105F5171CBA8CAE007690F1 /* AFMapViewGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFMapViewGestureRecognizer.h; sourceTree = "<group>"; };
+		1105F5181CBA8CAE007690F1 /* AFMapViewGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFMapViewGestureRecognizer.m; sourceTree = "<group>"; };
 		11CC3D2F1CB6549600828DC9 /* MapTinkoffPartners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapTinkoffPartners.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11CC3D331CB6549600828DC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		11CC3D351CB6549600828DC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -77,6 +80,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1105F51A1CBA8D14007690F1 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				11CC3D9F1CB90E2400828DC9 /* AFPersistentStack.h */,
+				11CC3DA01CB90E2400828DC9 /* AFPersistentStack.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		1105F51B1CBA8D3A007690F1 /* GestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				1105F5171CBA8CAE007690F1 /* AFMapViewGestureRecognizer.h */,
+				1105F5181CBA8CAE007690F1 /* AFMapViewGestureRecognizer.m */,
+			);
+			name = GestureRecognizer;
+			sourceTree = "<group>";
+		};
 		11CC3D261CB6549600828DC9 = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +118,9 @@
 		11CC3D311CB6549600828DC9 /* MapTinkoffPartners */ = {
 			isa = PBXGroup;
 			children = (
+				1105F51B1CBA8D3A007690F1 /* GestureRecognizer */,
 				11CC3D4D1CB6556700828DC9 /* Networking Extensions */,
+				1105F51A1CBA8D14007690F1 /* Core Data */,
 				11CC3D4E1CB6559B00828DC9 /* Models */,
 				11CC3D801CB6ABAE00828DC9 /* Views */,
 				11CC3D351CB6549600828DC9 /* AppDelegate.h */,
@@ -110,8 +133,6 @@
 				11CC3D431CB6549600828DC9 /* Info.plist */,
 				11CC3D321CB6549600828DC9 /* Supporting Files */,
 				11CC3D771CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld */,
-				11CC3D9F1CB90E2400828DC9 /* AFPersistentStack.h */,
-				11CC3DA01CB90E2400828DC9 /* AFPersistentStack.m */,
 			);
 			path = MapTinkoffPartners;
 			sourceTree = "<group>";
@@ -250,6 +271,7 @@
 				11CC3D831CB6EA5700828DC9 /* AFCurentLocationView.m in Sources */,
 				11CC3D791CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld in Sources */,
 				11CC3D991CB7EE9000828DC9 /* DepositionPoint.m in Sources */,
+				1105F5191CBA8CAE007690F1 /* AFMapViewGestureRecognizer.m in Sources */,
 				11CC3D7C1CB6AB9A00828DC9 /* AFPlusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +421,7 @@
 				11CC3D481CB6549600828DC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

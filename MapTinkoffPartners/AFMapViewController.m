@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import "Partner.h"
 #import "DepositionPoint.h"
+#import "AFMapViewGestureRecognizer.h"
 
 @interface AFMapViewController () <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate>
 
@@ -27,6 +28,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSError *error;
+    if (![[self fetchedResultsController:[DepositionPoint entityName]sortBy:@"partnerName"] performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    
+    AFMapViewGestureRecognizer *tapInterceptor = [[AFMapViewGestureRecognizer alloc] init];
+    tapInterceptor.touchesBeganCallback = ^(NSSet * touches, UIEvent * event) {
+        for (NSManagedObject* object in  [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
+            NSLog(@"%@", [object valueForKey:@"partnerName"]);
+        }
+    };
+    [self.mapView addGestureRecognizer:tapInterceptor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,9 +55,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 }
 
 #pragma mark - Actions
@@ -69,17 +80,6 @@
         [self.mapView setRegion:theRegion animated:YES];
     }
 }
-
-- (IBAction)searchPartners:(id)sender {
-    
-    
-    [self.importer importDepositionPoints:55.755786 longitude:37.617633 radius:1000];
-    
-    for (NSManagedObject* object in  [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
-        NSLog(@"%@", [object valueForKey:@"partnerName"]);
-    }
-}
-
 
 #pragma mark - Private methods
 @synthesize fetchedResultsController = _fetchedResultsController;
@@ -107,11 +107,6 @@
                                                    cacheName:nil];
     self.fetchedResultsController = theFetchedResultsController;
     [self.fetchedResultsController setDelegate:self];
-    
-    NSError *error;
-    if (![_fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
     
     return _fetchedResultsController;
 }

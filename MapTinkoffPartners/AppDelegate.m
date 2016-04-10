@@ -27,6 +27,7 @@
     self.importer = [[AFImporter alloc] initWithContext:self.persistentStack.backgroundManagedObjectContext webservice:self.webservice];
     
     [self.importer importPartners];
+    [self.importer importDepositionPoints:55.755786 longitude:37.617633 radius:1000];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
