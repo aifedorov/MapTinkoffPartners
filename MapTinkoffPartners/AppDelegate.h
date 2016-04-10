@@ -16,8 +16,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic, strong) AFPersistentStack *persistentStack;
-@property (nonatomic, strong) AFWebservice *webservice;
+@property (strong, nonatomic) AFPersistentStack *persistentStack;
+@property (strong, nonatomic) AFWebservice *webservice;
+
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

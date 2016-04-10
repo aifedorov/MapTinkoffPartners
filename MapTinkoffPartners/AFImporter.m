@@ -49,7 +49,8 @@
     }];
 }
 
-- (void)importDepositionPoints: (double)latitude longitude: (double)longitude radius: (NSInteger)radius {
+- (void)importDepositionPoints: (double)latitude longitude: (double)longitude radius: (NSInteger)radius completionHandler:(void (^)(void))handler {
+    
     [self.webservice fetchDepositonPointsOnLocation:latitude longitude:longitude radius:radius callback:^(NSArray *points) {
         [self.context performBlock:^{
             for (NSDictionary *partnerDict in points) {
@@ -63,6 +64,7 @@
                     NSLog(@"Error save context: %@", [error localizedDescription]);
                 }
             }
+            handler();
         }];
     }];
 }

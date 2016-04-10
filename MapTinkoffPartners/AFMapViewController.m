@@ -12,6 +12,7 @@
 #import "Partner.h"
 #import "DepositionPoint.h"
 #import "AFMapViewGestureRecognizer.h"
+#import "AFImporter.h"
 
 @interface AFMapViewController () <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate>
 
@@ -36,9 +37,7 @@
     
     AFMapViewGestureRecognizer *tapInterceptor = [[AFMapViewGestureRecognizer alloc] init];
     tapInterceptor.touchesBeganCallback = ^(NSSet * touches, UIEvent * event) {
-        for (NSManagedObject* object in  [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
-            NSLog(@"%@", [object valueForKey:@"partnerName"]);
-        }
+        [self updateLocationPartners];
     };
     [self.mapView addGestureRecognizer:tapInterceptor];
 }
@@ -109,6 +108,17 @@
     [self.fetchedResultsController setDelegate:self];
     
     return _fetchedResultsController;
+}
+
+- (void)updateLocationPartners {
+    
+    [self.importer importDepositionPoints:self.mapView.region.center.latitude longitude:self.mapView.region.center.longitude radius:1000 completionHandler:^{
+        
+        for (NSManagedObject* object in [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
+            NSLog(@"%@", [object valueForKey:@"partnerName"]);
+        }
+        
+    }];
 }
 
 - (void)updateUserLocation {
