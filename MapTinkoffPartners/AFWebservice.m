@@ -48,7 +48,7 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
 
 - (void) fetchDepositonPointsOnLocation: (double)latitude longitude: (double)longitude radius: (NSInteger)radius callback:(void (^)(NSArray *points))callback {
     
-    NSString *requestString = [NSString stringWithFormat:@"deposition_points?latitude=%.6f&longitude=%.6f&radius=%ld", latitude, longitude, (long)radius];
+    NSString *requestString = [NSString stringWithFormat:@"deposition_points?latitude=%f&longitude=%f&radius=%ld", latitude, longitude, (long)radius];
     
     NSString *requestUrlString = [AFBaseURLString stringByAppendingString: requestString];
     NSURL *requestUrl = [NSURL URLWithString:requestUrlString];

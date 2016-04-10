@@ -53,6 +53,7 @@
     
     [self.webservice fetchDepositonPointsOnLocation:latitude longitude:longitude radius:radius callback:^(NSArray *points) {
         [self.context performBlock:^{
+            
             for (NSDictionary *partnerDict in points) {
                 NSString *identifier = [partnerDict valueForKey:@"partnerName"];
                 DepositionPoint *point = [DepositionPoint findOrCreateDepositionPointWithIdentifier:identifier inContext:self.context];

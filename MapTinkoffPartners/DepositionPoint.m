@@ -35,10 +35,10 @@
     
     
     NSDictionary *locationDict = dictionary[@"location"];
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    self.latitude = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", locationDict[@"latitude"]]];
-    self.longitude = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", locationDict[@"longitude"]]];
+    self.latitude = [NSNumber numberWithDouble:[[NSString stringWithFormat:@"%@", locationDict[@"latitude"]] doubleValue]];
+    self.longitude = [NSNumber numberWithDouble:[[NSString stringWithFormat:@"%@", locationDict[@"longitude"]] doubleValue]];
+    
+    NSLog(@"longitude = %f", [self.latitude doubleValue]);
 }
 
 @end

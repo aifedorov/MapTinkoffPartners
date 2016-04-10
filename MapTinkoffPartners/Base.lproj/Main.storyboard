@@ -239,10 +239,10 @@
                                 <exclude reference="HZV-4m-JKq"/>
                                 <exclude reference="NYv-fJ-ZVo"/>
                                 <exclude reference="a1o-ER-wJ2"/>
-                                <exclude reference="bqt-7Z-Wfu"/>
+                                <exclude reference="qB6-VH-qCB"/>
                                 <exclude reference="3Ui-YU-4U5"/>
                                 <exclude reference="fz4-zc-NXn"/>
-                                <exclude reference="qB6-VH-qCB"/>
+                                <exclude reference="bqt-7Z-Wfu"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -255,20 +255,14 @@
                                 <include reference="HZV-4m-JKq"/>
                                 <include reference="NYv-fJ-ZVo"/>
                                 <include reference="a1o-ER-wJ2"/>
-                                <include reference="bqt-7Z-Wfu"/>
+                                <include reference="qB6-VH-qCB"/>
                                 <include reference="3Ui-YU-4U5"/>
                                 <include reference="fz4-zc-NXn"/>
-                                <include reference="qB6-VH-qCB"/>
+                                <include reference="bqt-7Z-Wfu"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Tinkoff Partners" id="Aox-yy-FNr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="74E-DA-F2W">
-                            <connections>
-                                <action selector="searchPartners:" destination="KNh-k6-Sps" id="v7H-my-7lw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Tinkoff Partners" id="Aox-yy-FNr"/>
                     <connections>
                         <outlet property="currentLocationButton" destination="Bxs-pU-Pa8" id="m5L-NI-dOV"/>
                         <outlet property="mapView" destination="HLb-pX-Hx7" id="7W2-gW-Vvz"/>
