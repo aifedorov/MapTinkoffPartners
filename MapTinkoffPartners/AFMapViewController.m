@@ -31,11 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSError *error;
-    if (![[self fetchedResultsController:[DepositionPoint entityName]sortBy:@"partnerName"] performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    
     AFMapViewGestureRecognizer *tapInterceptor = [[AFMapViewGestureRecognizer alloc] init];
     tapInterceptor.touchesBeganCallback = ^(NSSet * touches, UIEvent * event) {
         [self updateLocationPartners];
@@ -109,6 +104,11 @@
                                                    cacheName:nil];
     self.fetchedResultsController = theFetchedResultsController;
     [self.fetchedResultsController setDelegate:self];
+    
+    NSError *error;
+    if (![[self fetchedResultsController:entityName sortBy:key] performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
     
     return _fetchedResultsController;
 }

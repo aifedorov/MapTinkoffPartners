@@ -2,7 +2,7 @@
 //  Partner+CoreDataProperties.m
 //  MapTinkoffPartners
 //
-//  Created by Александр on 08.04.16.
+//  Created by Александр on 11.04.16.
 //  Copyright © 2016 Home. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,20 +13,20 @@
 
 @implementation Partner (CoreDataProperties)
 
-@dynamic idPartner;
-@dynamic name;
-@dynamic url;
-@dynamic picture;
-@dynamic hasLocations;
-@dynamic isMomentary;
 @dynamic depositionDuration;
-@dynamic limitations;
-@dynamic pointType;
-@dynamic externalPartnerId;
 @dynamic descriptionPartner;
-@dynamic moneyMin;
-@dynamic moneyMax;
+@dynamic externalPartnerId;
+@dynamic hasLocations;
 @dynamic hasPreferentialDeposition;
+@dynamic idPartner;
+@dynamic isMomentary;
+@dynamic limitations;
+@dynamic moneyMax;
+@dynamic moneyMin;
+@dynamic name;
+@dynamic picture;
+@dynamic pointType;
+@dynamic url;
 @dynamic depospoint;
 
 @end

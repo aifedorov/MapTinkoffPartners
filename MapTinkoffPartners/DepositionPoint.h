@@ -2,7 +2,7 @@
 //  DepositionPoint.h
 //  MapTinkoffPartners
 //
-//  Created by Александр on 08.04.16.
+//  Created by Александр on 11.04.16.
 //  Copyright © 2016 Home. All rights reserved.
 //
 
@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DepositionPoint : AFObjectModel
 
 + (DepositionPoint *)findOrCreateDepositionPointWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context ;
-
 - (void)loadFromDictionary:(NSDictionary *)dictionary;
 
 @end

@@ -2,7 +2,7 @@
 //  DepositionPoint.m
 //  MapTinkoffPartners
 //
-//  Created by Александр on 08.04.16.
+//  Created by Александр on 11.04.16.
 //  Copyright © 2016 Home. All rights reserved.
 //
 
