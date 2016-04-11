@@ -13,6 +13,6 @@
 
 - (void) fetchAllPartners: (void (^)(NSArray *partners))callback;
 - (void) fetchDepositonPointsOnLocation:(double) latitude longitude:(double) longitude radius:(NSInteger) radius callback:(void (^)(NSArray *points))callback;
-- (void) fetchIcons:(NSString *)namePicture callback:(void (^)(UIImage *iconImage))callback;
+- (void) fetchIcons:(NSString *)namePicture callback:(void (^)(UIImage *iconImage, NSDictionary *allHeaderFieldsDictionary))callback;
 
 @end

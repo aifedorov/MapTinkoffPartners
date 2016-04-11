@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "AFObjectModel.h"
 
-@class DepositionPoint;
+@class DepositionPoint, Icon;
 
 NS_ASSUME_NONNULL_BEGIN
 

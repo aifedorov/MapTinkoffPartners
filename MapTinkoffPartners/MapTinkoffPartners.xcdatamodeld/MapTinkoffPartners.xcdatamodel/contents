@@ -9,6 +9,12 @@
         <attribute name="workHours" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="partner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Partner" inverseName="depospoint" inverseEntity="Partner" syncable="YES"/>
     </entity>
+    <entity name="Icon" representedClassName="Icon" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="lastModifiedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="partner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Partner" inverseName="icon" inverseEntity="Partner" syncable="YES"/>
+    </entity>
     <entity name="Partner" representedClassName="Partner" syncable="YES">
         <attribute name="depositionDuration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptionPartner" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,9 +31,11 @@
         <attribute name="pointType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="depospoint" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DepositionPoint" inverseName="partner" inverseEntity="DepositionPoint" syncable="YES"/>
+        <relationship name="icon" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Icon" inverseName="partner" inverseEntity="Icon" syncable="YES"/>
     </entity>
     <elements>
         <element name="DepositionPoint" positionX="-45" positionY="72" width="128" height="148"/>
-        <element name="Partner" positionX="-297" positionY="-36" width="128" height="268"/>
+        <element name="Partner" positionX="-297" positionY="-36" width="128" height="283"/>
+        <element name="Icon" positionX="-549" positionY="45" width="128" height="103"/>
     </elements>
 </model>

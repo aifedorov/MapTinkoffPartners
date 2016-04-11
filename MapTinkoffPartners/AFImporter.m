@@ -11,6 +11,7 @@
 #import "AFWebservice.h"
 #import "Partner.h"
 #import "DepositionPoint.h"
+#import "Icon.h"
 
 @interface AFImporter ()
 
@@ -69,7 +70,7 @@
                     NSArray *results = [self.context executeFetchRequest:request error:&errorRequest];
 
                     if (errorRequest) {
-                        NSLog(@"Error save request entity Parnter: %@", [errorRequest localizedDescription]);
+                        NSLog(@"Error request entity Parnter: %@", [errorRequest localizedDescription]);
                     }
                     
                     Partner* partner = [results objectAtIndex:0];
@@ -87,8 +88,42 @@
 }
 
 - (void)importIcons:(NSString *)iconNameString handler:(void (^)(UIImage *iconImage))handler {
-    [self.webservice fetchIcons:iconNameString callback:^(UIImage *iconImage) {
-        handler(iconImage);
+    [self.webservice fetchIcons:iconNameString callback:^(UIImage *iconImage, NSDictionary *allHeaderFieldsDictionary) {
+        
+        [self.context performBlock:^{
+            NSString *identifier = iconNameString;
+            
+            NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
+            [dateformat setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
+            NSDate *lastModifiedDate = [dateformat dateFromString:[NSString stringWithFormat:@"%@", [allHeaderFieldsDictionary objectForKey:@"Last-Modified"]]];
+
+            Icon *icon = [Icon findOrCreateIconWithIdentifier:identifier lastModifiedDate:lastModifiedDate inContext:self.context];
+            [icon setName:identifier];
+            [icon setLastModifiedDate:lastModifiedDate];
+            [icon setImage:UIImagePNGRepresentation(iconImage)];
+            
+            NSFetchRequest *request = [[NSFetchRequest alloc] init];
+            [request setEntity:[NSEntityDescription entityForName:[Partner entityName]inManagedObjectContext:self.context]];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"picture == %@", identifier];
+            [request setPredicate:predicate];
+            
+            NSError *errorRequest = nil;
+            NSArray *results = [self.context executeFetchRequest:request error:&errorRequest];
+            
+            if (errorRequest) {
+                NSLog(@"Error request entity Partner: %@", [errorRequest localizedDescription]);
+            }
+            
+            Partner* partner = [results objectAtIndex:0];
+            [partner setIcon:icon];
+            
+            NSError *error = nil;
+            [self.context save:&error];
+            if (error) {
+                NSLog(@"Error save context: %@", [error localizedDescription]);
+            }
+            handler(iconImage);
+        }];
     }];
 }
 

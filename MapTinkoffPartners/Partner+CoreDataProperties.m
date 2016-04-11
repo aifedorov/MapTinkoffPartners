@@ -28,5 +28,6 @@
 @dynamic pointType;
 @dynamic url;
 @dynamic depospoint;
+@dynamic icon;
 
 @end

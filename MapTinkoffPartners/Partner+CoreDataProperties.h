@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *pointType;
 @property (nullable, nonatomic, retain) NSString *url;
 @property (nullable, nonatomic, retain) NSSet<DepositionPoint *> *depospoint;
+@property (nullable, nonatomic, retain) Icon *icon;
 
 @end
 

@@ -75,7 +75,7 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
     [dataTask resume];
 }
 
-- (void) fetchIcons:(NSString *)namePicture callback:(void (^)(UIImage *iconImage))callback {
+- (void) fetchIcons:(NSString *)namePicture callback:(void (^)(UIImage *iconImage, NSDictionary *allHeaderFieldsDictionary))callback {
     
     NSString *requestString = [NSString stringWithFormat:@"https://static.tinkoff.ru/icons/deposition-partners-v3/mdpi/%@", namePicture];
     NSURL *downloadURL = [NSURL URLWithString:requestString];
@@ -85,12 +85,12 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
         
         if (error) {
             NSLog(@"Error download image: %@", [error localizedDescription]);
-            callback(nil);
+            callback(nil, [(NSHTTPURLResponse *)response allHeaderFields]);
             return;
         }
-
+        
         UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:location]];
-        callback(image);
+        callback(image,[(NSHTTPURLResponse *)response allHeaderFields]);
     }];
     [downloadImageTask resume];
 }

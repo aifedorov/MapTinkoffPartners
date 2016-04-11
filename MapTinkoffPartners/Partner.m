@@ -8,6 +8,7 @@
 
 #import "Partner.h"
 #import "DepositionPoint.h"
+#import "Icon.h"
 
 @implementation Partner
 
@@ -44,6 +45,5 @@
     self.moneyMin = [NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@", dictionary[@"moneyMin"]] integerValue]];
     self.moneyMax = [NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@", dictionary[@"moneyMax"]] integerValue]];
 }
-
 
 @end

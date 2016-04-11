@@ -157,7 +157,6 @@
                         AFCustomAnnotation *annotation = [[AFCustomAnnotation alloc] initWhithTitle:[NSString stringWithFormat:@"%@", point.partner.name] location:location image:iconImage];
                         
                         [self.mapView addAnnotation:annotation];
-                        
                     }];
                 }
         }];
