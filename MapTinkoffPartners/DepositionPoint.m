@@ -37,8 +37,6 @@
     NSDictionary *locationDict = dictionary[@"location"];
     self.latitude = [NSNumber numberWithDouble:[[NSString stringWithFormat:@"%@", locationDict[@"latitude"]] doubleValue]];
     self.longitude = [NSNumber numberWithDouble:[[NSString stringWithFormat:@"%@", locationDict[@"longitude"]] doubleValue]];
-    
-    NSLog(@"longitude = %f", [self.latitude doubleValue]);
 }
 
 @end

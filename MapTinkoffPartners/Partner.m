@@ -37,15 +37,12 @@
      self.pointType = dictionary[@"pointType"];
      self.descriptionPartner = dictionary[@"description"];
     
-    
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    self.hasLocations = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"hasLocations"]]];
-    self.isMomentary = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"isMomentary"]]];
-    self.hasPreferentialDeposition = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"hasPreferentialDeposition"]]];
-    self.externalPartnerId = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"externalPartnerId"]]];
-    self.moneyMin = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"moneyMin"]]];
-    self.moneyMax = [numberFormatter numberFromString:[NSString stringWithFormat:@"%@", dictionary[@"moneyMax"]]];
+    self.hasLocations = [NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@", dictionary[@"hasLocations"]] integerValue]];
+    self.isMomentary = [NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@", dictionary[@"isMomentary"]] integerValue]];
+      self.hasPreferentialDeposition = [NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@", dictionary[@"hasPreferentialDeposition"]] integerValue]];
+      self.externalPartnerId = [NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@", dictionary[@"externalPartnerId"]] integerValue]];
+      self.moneyMin = [NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@", dictionary[@"moneyMin"]] integerValue]];
+    self.moneyMax = [NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@", dictionary[@"moneyMax"]] integerValue]];
 }
 
 @end

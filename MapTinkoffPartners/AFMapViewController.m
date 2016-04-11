@@ -152,9 +152,6 @@
             location.latitude = [point.latitude doubleValue];
             location.longitude = [point.longitude doubleValue];
             
-//            NSLog(@" Annotation latitude = %@", point.latitude);
-//            NSLog(@"Annotation longitude = %@", point.longitude);
-            
             [annotation setCoordinate:location];
             
             [self.mapView addAnnotation:annotation];
