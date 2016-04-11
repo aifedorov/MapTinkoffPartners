@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
-    <entity name="AFObject" isAbstract="YES" syncable="YES"/>
-    <entity name="DepositionPoint" representedClassName="DepositionPoint" parentEntity="AFObject" syncable="YES">
+    <entity name="DepositionPoint" representedClassName="DepositionPoint" syncable="YES">
         <attribute name="addressInfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fullAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -10,7 +9,7 @@
         <attribute name="workHours" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="partner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Partner" inverseName="depospoint" inverseEntity="Partner" syncable="YES"/>
     </entity>
-    <entity name="Partner" representedClassName="Partner" parentEntity="AFObject" syncable="YES">
+    <entity name="Partner" representedClassName="Partner" syncable="YES">
         <attribute name="depositionDuration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptionPartner" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="externalPartnerId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -30,6 +29,5 @@
     <elements>
         <element name="DepositionPoint" positionX="-45" positionY="72" width="128" height="148"/>
         <element name="Partner" positionX="-297" positionY="-36" width="128" height="268"/>
-        <element name="AFObject" positionX="-162" positionY="-162" width="128" height="43"/>
     </elements>
 </model>

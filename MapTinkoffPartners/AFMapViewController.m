@@ -81,7 +81,7 @@
 
 @synthesize fetchedResultsController = _fetchedResultsController;
 
-- (NSFetchedResultsController *)fetchedResultsController:(id)entityName sortBy:(NSString *)key {
+- (NSFetchedResultsController *)fetchedResultsController:(id)entityName predicate:(NSPredicate *)predicate sortBy:(NSString *)key {
     
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
@@ -96,6 +96,9 @@
                               initWithKey:key ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
  
+    if (predicate) {
+        [fetchRequest setPredicate:predicate];
+    }
     
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
@@ -106,7 +109,7 @@
     [self.fetchedResultsController setDelegate:self];
     
     NSError *error;
-    if (![[self fetchedResultsController:entityName sortBy:key] performFetch:&error]) {
+    if (![[self fetchedResultsController:entityName predicate:predicate sortBy:key] performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
     
@@ -140,22 +143,25 @@
     
     CLLocationDistance radius = [locationcenterCoordinate distanceFromLocation:locationVisibleRect];
     
-    [self.importer importDepositionPoints:self.mapView.region.center.latitude longitude:self.mapView.region.center.longitude radius:radius completionHandler:^{
-        
-        for (DepositionPoint* point in [[self fetchedResultsController:[DepositionPoint entityName] sortBy:@"partnerName"] fetchedObjects]) {
+    [self.importer importPartners:^{
+        [self.importer importDepositionPoints:self.mapView.region.center.latitude longitude:self.mapView.region.center.longitude radius:radius completionHandler:^{
             
-            AFMapAnnotation *annotation = [[AFMapAnnotation alloc] init];
-            
-            annotation.title = [NSString stringWithFormat:@"%@", point.partnerName];
-            
-            CLLocationCoordinate2D location;
-            location.latitude = [point.latitude doubleValue];
-            location.longitude = [point.longitude doubleValue];
-            
-            [annotation setCoordinate:location];
-            
-            [self.mapView addAnnotation:annotation];
-        }
+            for (DepositionPoint* point in [[self fetchedResultsController:[DepositionPoint entityName] predicate:nil sortBy:@"partnerName"] fetchedObjects]) {
+                
+                    AFMapAnnotation *annotation = [[AFMapAnnotation alloc] init];
+                    
+                    annotation.title = [NSString stringWithFormat:@"%@", point.partner.name];
+                    annotation.subtitle = [NSString stringWithFormat:@"%@", point.fullAddress];
+                
+                    CLLocationCoordinate2D location;
+                    location.latitude = [point.latitude doubleValue];
+                    location.longitude = [point.longitude doubleValue];
+                    
+                    [annotation setCoordinate:location];
+                    
+                    [self.mapView addAnnotation:annotation];
+            }
+        }];
     }];
 }
 

@@ -30,34 +30,13 @@
     }
     return self;
 }
-
-- (void)importPartners {
+- (void)importPartners:(void (^)(void))handler {
     [self.webservice fetchAllPartners:^(NSArray *partners) {
         [self.context performBlock:^{
             for (NSDictionary *partnerDict in partners) {
-                NSString *identifier = [partnerDict valueForKey:@"name"];
+                NSString *identifier = [partnerDict valueForKey:@"idPartner"];
                 Partner *partner = [Partner findOrCreatePartnerWithIdentifier:identifier inContext:self.context];
                 [partner loadFromDictionary:partnerDict];
-                
-                NSError *error = nil;
-                [self.context save:&error];
-                if (error) {
-                    NSLog(@"Error save context: %@", [error localizedDescription]);
-                }
-            }
-        }];
-    }];
-}
-
-- (void)importDepositionPoints: (double)latitude longitude: (double)longitude radius: (NSInteger)radius completionHandler:(void (^)(void))handler {
-    
-    [self.webservice fetchDepositonPointsOnLocation:latitude longitude:longitude radius:radius callback:^(NSArray *points) {
-        [self.context performBlock:^{
-            
-            for (NSDictionary *partnerDict in points) {
-                NSString *identifier = [partnerDict valueForKey:@"partnerName"];
-                DepositionPoint *point = [DepositionPoint findOrCreateDepositionPointWithIdentifier:identifier inContext:self.context];
-                [point loadFromDictionary:partnerDict];
                 
                 NSError *error = nil;
                 [self.context save:&error];
@@ -68,6 +47,43 @@
             handler();
         }];
     }];
+}
+
+- (void)importDepositionPoints: (double)latitude longitude: (double)longitude radius: (NSInteger)radius completionHandler:(void (^)(void))handler {
+    
+        [self.webservice fetchDepositonPointsOnLocation:latitude longitude:longitude radius:radius callback:^(NSArray *points) {
+            
+            [self.context performBlock:^{
+                
+                for (NSDictionary *partnerDict in points) {
+                    NSString *identifier = [partnerDict valueForKey:@"partnerName"];
+                    DepositionPoint *point = [DepositionPoint findOrCreateDepositionPointWithIdentifier:identifier inContext:self.context];
+                    [point loadFromDictionary:partnerDict];
+                    
+                    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+                    [request setEntity:[NSEntityDescription entityForName:[Partner entityName]inManagedObjectContext:self.context]];
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"idPartner == %@", identifier];
+                    [request setPredicate:predicate];
+                    
+                    NSError *errorRequest = nil;
+                    NSArray *results = [self.context executeFetchRequest:request error:&errorRequest];
+
+                    if (errorRequest) {
+                        NSLog(@"Error save request entity Parnter: %@", [errorRequest localizedDescription]);
+                    }
+                    
+                    Partner* partner = [results objectAtIndex:0];
+                    [partner addDepospoint:[NSSet setWithObject:point]];
+                    
+                    NSError *error = nil;
+                    [self.context save:&error];
+                    if (error) {
+                        NSLog(@"Error save context: %@", [error localizedDescription]);
+                    }
+                }
+                handler();
+            }];
+        }];
 }
 
 @end

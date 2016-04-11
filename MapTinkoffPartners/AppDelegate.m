@@ -26,8 +26,6 @@
     self.webservice = [[AFWebservice alloc] init];
     self.importer = [[AFImporter alloc] initWithContext:self.persistentStack.backgroundManagedObjectContext webservice:self.webservice];
     
-    [self.importer importPartners];
-    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     UINavigationController *rootNavigatinCintroller = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"rootNavigationController"];
