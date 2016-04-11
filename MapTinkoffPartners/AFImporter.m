@@ -86,4 +86,10 @@
         }];
 }
 
+- (void)importIcons:(NSString *)iconNameString handler:(void (^)(UIImage *iconImage))handler {
+    [self.webservice fetchIcons:iconNameString callback:^(UIImage *iconImage) {
+        handler(iconImage);
+    }];
+}
+
 @end

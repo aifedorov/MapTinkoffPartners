@@ -11,6 +11,6 @@
 @interface AFObjectModel : NSManagedObject
 
 + (id)entityName;
-+ (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext*)context;
++ (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext *)context;
 
 @end

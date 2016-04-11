@@ -75,4 +75,24 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
     [dataTask resume];
 }
 
+- (void) fetchIcons:(NSString *)namePicture callback:(void (^)(UIImage *iconImage))callback {
+    
+    NSString *requestString = [NSString stringWithFormat:@"https://static.tinkoff.ru/icons/deposition-partners-v3/mdpi/%@", namePicture];
+    NSURL *downloadURL = [NSURL URLWithString:requestString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:downloadURL];
+    
+    NSURLSessionDownloadTask *downloadImageTask =[[NSURLSession sharedSession] downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        
+        if (error) {
+            NSLog(@"Error download image: %@", [error localizedDescription]);
+            callback(nil);
+            return;
+        }
+
+        UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:location]];
+        callback(image);
+    }];
+    [downloadImageTask resume];
+}
+
 @end

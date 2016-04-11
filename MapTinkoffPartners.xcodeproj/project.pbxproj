@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1105F5191CBA8CAE007690F1 /* AFMapViewGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1105F5181CBA8CAE007690F1 /* AFMapViewGestureRecognizer.m */; };
-		1105F51E1CBAA2F2007690F1 /* AFMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1105F51D1CBAA2F2007690F1 /* AFMapAnnotation.m */; };
 		11C242771CBB92F6003D5B7E /* Partner+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C242701CBB92F6003D5B7E /* Partner+CoreDataProperties.m */; };
 		11C242781CBB92F6003D5B7E /* Partner.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C242721CBB92F6003D5B7E /* Partner.m */; };
 		11C242791CBB92F6003D5B7E /* DepositionPoint+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C242741CBB92F6003D5B7E /* DepositionPoint+CoreDataProperties.m */; };
 		11C2427A1CBB92F6003D5B7E /* DepositionPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C242761CBB92F6003D5B7E /* DepositionPoint.m */; };
+		11C2427D1CBBC77F003D5B7E /* AFCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C2427C1CBBC77F003D5B7E /* AFCustomAnnotation.m */; };
 		11CC3D341CB6549600828DC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D331CB6549600828DC9 /* main.m */; };
 		11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D361CB6549600828DC9 /* AppDelegate.m */; };
 		11CC3D3A1CB6549600828DC9 /* AFMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CC3D391CB6549600828DC9 /* AFMapViewController.m */; };
@@ -33,8 +33,6 @@
 /* Begin PBXFileReference section */
 		1105F5171CBA8CAE007690F1 /* AFMapViewGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFMapViewGestureRecognizer.h; sourceTree = "<group>"; };
 		1105F5181CBA8CAE007690F1 /* AFMapViewGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFMapViewGestureRecognizer.m; sourceTree = "<group>"; };
-		1105F51C1CBAA2F2007690F1 /* AFMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFMapAnnotation.h; sourceTree = "<group>"; };
-		1105F51D1CBAA2F2007690F1 /* AFMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFMapAnnotation.m; sourceTree = "<group>"; };
 		11C2426F1CBB92F6003D5B7E /* Partner+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Partner+CoreDataProperties.h"; sourceTree = "<group>"; };
 		11C242701CBB92F6003D5B7E /* Partner+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Partner+CoreDataProperties.m"; sourceTree = "<group>"; };
 		11C242711CBB92F6003D5B7E /* Partner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Partner.h; sourceTree = "<group>"; };
@@ -43,6 +41,8 @@
 		11C242741CBB92F6003D5B7E /* DepositionPoint+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DepositionPoint+CoreDataProperties.m"; sourceTree = "<group>"; };
 		11C242751CBB92F6003D5B7E /* DepositionPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositionPoint.h; sourceTree = "<group>"; };
 		11C242761CBB92F6003D5B7E /* DepositionPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositionPoint.m; sourceTree = "<group>"; };
+		11C2427B1CBBC77F003D5B7E /* AFCustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCustomAnnotation.h; sourceTree = "<group>"; };
+		11C2427C1CBBC77F003D5B7E /* AFCustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFCustomAnnotation.m; sourceTree = "<group>"; };
 		11CC3D2F1CB6549600828DC9 /* MapTinkoffPartners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapTinkoffPartners.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11CC3D331CB6549600828DC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		11CC3D351CB6549600828DC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 				11CC3D431CB6549600828DC9 /* Info.plist */,
 				11CC3D321CB6549600828DC9 /* Supporting Files */,
 				11CC3D771CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld */,
-				1105F51C1CBAA2F2007690F1 /* AFMapAnnotation.h */,
-				1105F51D1CBAA2F2007690F1 /* AFMapAnnotation.m */,
+				11C2427B1CBBC77F003D5B7E /* AFCustomAnnotation.h */,
+				11C2427C1CBBC77F003D5B7E /* AFCustomAnnotation.m */,
 			);
 			path = MapTinkoffPartners;
 			sourceTree = "<group>";
@@ -268,6 +268,7 @@
 				11C242791CBB92F6003D5B7E /* DepositionPoint+CoreDataProperties.m in Sources */,
 				11CC3D3A1CB6549600828DC9 /* AFMapViewController.m in Sources */,
 				11CC3D4B1CB6555600828DC9 /* AFWebservice.m in Sources */,
+				11C2427D1CBBC77F003D5B7E /* AFCustomAnnotation.m in Sources */,
 				11CC3DA41CB9634400828DC9 /* AFObjectModel.m in Sources */,
 				11CC3D371CB6549600828DC9 /* AppDelegate.m in Sources */,
 				11CC3D341CB6549600828DC9 /* main.m in Sources */,
@@ -275,7 +276,6 @@
 				11CC3D831CB6EA5700828DC9 /* AFCurentLocationView.m in Sources */,
 				11C242781CBB92F6003D5B7E /* Partner.m in Sources */,
 				11CC3D791CB65A5500828DC9 /* MapTinkoffPartners.xcdatamodeld in Sources */,
-				1105F51E1CBAA2F2007690F1 /* AFMapAnnotation.m in Sources */,
 				1105F5191CBA8CAE007690F1 /* AFMapViewGestureRecognizer.m in Sources */,
 				11C242771CBB92F6003D5B7E /* Partner+CoreDataProperties.m in Sources */,
 				11CC3D7C1CB6AB9A00828DC9 /* AFPlusView.m in Sources */,

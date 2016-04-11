@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class NSManagedObjectContext;
 @class AFWebservice;
@@ -17,5 +18,6 @@
            webservice:(AFWebservice *)webservice;
 - (void)importPartners:(void (^)(void))handler;
 - (void)importDepositionPoints: (double)latitude longitude: (double)longitude radius: (NSInteger)radius completionHandler:(void (^)(void))handler;
+- (void)importIcons:(NSString *)iconNameString handler:(void (^)(UIImage *iconImage))handler;
 
 @end

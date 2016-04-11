@@ -13,9 +13,9 @@
 #import "DepositionPoint.h"
 #import "AFMapViewGestureRecognizer.h"
 #import "AFImporter.h"
-#import "AFMapAnnotation.h"
+#import "AFCustomAnnotation.h"
 
-@interface AFMapViewController () <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate>
+@interface AFMapViewController () <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *plusZoomButton;
 @property (weak, nonatomic) IBOutlet UIButton *minusZoomButton;
@@ -146,21 +146,20 @@
     [self.importer importPartners:^{
         [self.importer importDepositionPoints:self.mapView.region.center.latitude longitude:self.mapView.region.center.longitude radius:radius completionHandler:^{
             
-            for (DepositionPoint* point in [[self fetchedResultsController:[DepositionPoint entityName] predicate:nil sortBy:@"partnerName"] fetchedObjects]) {
-                
-                    AFMapAnnotation *annotation = [[AFMapAnnotation alloc] init];
+                for (DepositionPoint* point in [[self fetchedResultsController:[DepositionPoint entityName] predicate:nil sortBy:@"partnerName"] fetchedObjects]) {
                     
-                    annotation.title = [NSString stringWithFormat:@"%@", point.partner.name];
-                    annotation.subtitle = [NSString stringWithFormat:@"%@", point.fullAddress];
-                
-                    CLLocationCoordinate2D location;
-                    location.latitude = [point.latitude doubleValue];
-                    location.longitude = [point.longitude doubleValue];
-                    
-                    [annotation setCoordinate:location];
-                    
-                    [self.mapView addAnnotation:annotation];
-            }
+                    [self.importer importIcons:point.partner.picture handler:^(UIImage *iconImage) {
+                        
+                        CLLocationCoordinate2D location;
+                        location.latitude = [point.latitude doubleValue];
+                        location.longitude = [point.longitude doubleValue];
+                        
+                        AFCustomAnnotation *annotation = [[AFCustomAnnotation alloc] initWhithTitle:[NSString stringWithFormat:@"%@", point.partner.name] location:location image:iconImage];
+                        
+                        [self.mapView addAnnotation:annotation];
+                        
+                    }];
+                }
         }];
     }];
 }
@@ -199,6 +198,30 @@
     UIGraphicsEndImageContext();
     
     return image;
+}
+
+#pragma mark - MKMapViewDelegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    
+    static NSString* identifier = @"Annotation";
+    
+    if ([annotation isKindOfClass:[AFCustomAnnotation class]]) {
+        
+        AFCustomAnnotation *customAnnotation =  (AFCustomAnnotation *)annotation;
+        
+        MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        
+        if (!annotationView) {
+            annotationView = customAnnotation.annotationView;
+        } else {
+            annotationView.annotation = annotation;
+        }
+        return annotationView;
+        
+    } else {
+        return nil;
+    }
 }
 
 @end
