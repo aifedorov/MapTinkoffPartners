@@ -14,7 +14,7 @@
 
 + (Partner *)findOrCreatePartnerWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"name = %@", identifier];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"idPartner = %@", identifier];
     NSError *error = nil;
     NSArray *result = [context executeFetchRequest:fetchRequest error:&error];
     if (error) {

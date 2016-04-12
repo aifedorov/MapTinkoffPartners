@@ -19,7 +19,7 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
 
 @implementation AFWebservice
 
-- (void) fetchAllPartners: (void (^)(NSArray *partners))callback {
+- (void)fetchAllPartners: (void (^)(NSArray *partners))callback {
     
     static NSString *requestString = @"deposition_partners?accountType=Credit";
     
@@ -46,7 +46,7 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
     [dataTask resume];
 }
 
-- (void) fetchDepositonPointsOnLocation: (double)latitude longitude: (double)longitude radius: (NSInteger)radius callback:(void (^)(NSArray *points))callback {
+- (void)fetchDepositonPointsOnLocation: (double)latitude longitude: (double)longitude radius: (NSInteger)radius callback:(void (^)(NSArray *points))callback {
     
     NSString *requestString = [NSString stringWithFormat:@"deposition_points?latitude=%f&longitude=%f&radius=%ld", latitude, longitude, (long)radius];
     
@@ -68,6 +68,8 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
             if ([result[@"resultCode"] isEqualToString:@"OK"]) {
                 NSArray *points = result[@"payload"];
                 callback(points);
+            } else {
+                NSLog(@"Status code: %@", result[@"resultCode"]);
             }
         }
     }];
@@ -75,7 +77,7 @@ static NSString * const AFBaseURLString = @"https://api.tinkoff.ru/v1/";
     [dataTask resume];
 }
 
-- (void) fetchIcons:(NSString *)namePicture callback:(void (^)(UIImage *iconImage, NSDictionary *allHeaderFieldsDictionary))callback {
+- (void)fetchIcons:(NSString *)namePicture callback:(void (^)(UIImage *iconImage, NSDictionary *allHeaderFieldsDictionary))callback {
     
     NSString *requestString = [NSString stringWithFormat:@"https://static.tinkoff.ru/icons/deposition-partners-v3/mdpi/%@", namePicture];
     NSURL *downloadURL = [NSURL URLWithString:requestString];
