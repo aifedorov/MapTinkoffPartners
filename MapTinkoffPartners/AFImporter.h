@@ -16,7 +16,7 @@
 
 - (id)initWithContext:(NSManagedObjectContext *)context
            webservice:(AFWebservice *)webservice;
-- (void)importPartners:(void (^)(void))handler;
+- (void)importPartners;
 - (void)importDepositionPoints: (double)latitude longitude: (double)longitude radius: (NSInteger)radius handler:(void (^)(void))handler;
 
 @end

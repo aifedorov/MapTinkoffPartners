@@ -31,9 +31,9 @@
     }
     return self;
 }
-- (void)importPartners:(void (^)(void))handler {
+- (void)importPartners {
     [self.webservice fetchAllPartners:^(NSArray *partners) {
-        [self importIcons:partners handler:handler];
+        [self importIcons:partners];
     }];
 }
 
@@ -76,7 +76,7 @@
         }];
 }
 
-- (void)importIcons:(NSArray *)partners handler:(void (^)(void))handler {
+- (void)importIcons:(NSArray *)partners {
     
     for (NSDictionary *partnerDict in partners) {
         
@@ -106,8 +106,6 @@
                 if (error) {
                     NSLog(@"Error save context: %@", [error localizedDescription]);
                 }
-                
-                handler();
             }];
         }];
     }

@@ -24,7 +24,7 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSOperationQueue *importQueue;
+@property (nonatomic) CLLocationCoordinate2D oldLocation;
 
 @end
 
@@ -33,10 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.importQueue =  [[NSOperationQueue alloc] init];
-    
     AFMapViewGestureRecognizer *tapInterceptor = [[AFMapViewGestureRecognizer alloc] init];
-    tapInterceptor.touchesBeganCallback = ^(NSSet * touches, UIEvent * event) {
+    tapInterceptor.touchesBeganCallback = ^(NSSet *touches, UIEvent *event) {
         [self updateLocationPartners];
     };
     [self.mapView addGestureRecognizer:tapInterceptor];
@@ -124,11 +122,8 @@
     MKCoordinateRegion moscowRegion = self.mapView.region;
     
     CLLocationCoordinate2D location;
-//    location.latitude = 55.751244;
-//    location.longitude = 37.618423;
-    
-    location.latitude = 55.757698;
-    location.longitude = 37.634119;
+    location.latitude = 55.751244;
+    location.longitude = 37.618423;
     
     moscowRegion.center = location;
     
@@ -158,6 +153,8 @@
 
 - (void)updateLocationPartners {
     
+    self.oldLocation = self.mapView.region.center;
+    
     MKMapRect visibleMapRect = self.mapView.visibleMapRect;
     MKMapPoint cornerPoint = MKMapPointMake(visibleMapRect.origin.x, visibleMapRect.origin.y);
 
@@ -168,59 +165,35 @@
     
     CLLocationDistance radius = [locationcenterCoordinate distanceFromLocation:locationVisibleRect];
     
-//    __weak AFImporter *weakImporter = self.importer;
-//    NSOperation *operationImportPartners = [NSBlockOperation blockOperationWithBlock:^{
-        [self.importer importPartners:^{
-            [self.importer importDepositionPoints:self.mapView.region.center.latitude longitude:self.mapView.region.center.longitude radius:radius handler:^{
-                
-                NSArray *points = [[self fetchedResultsController:[DepositionPoint entityName] predicate:nil sortBy:@"partnerName"] fetchedObjects];
-                
-                for (DepositionPoint* point in points) {
-                    
-                    CLLocationCoordinate2D location;
-                    location.latitude = [point.latitude doubleValue];
-                    location.longitude = [point.longitude doubleValue];
-                    
-                    UIImage *iconImage = [UIImage imageWithData:point.partner.icon.image];
-                    
-                    AFCustomAnnotation *annotation = [[AFCustomAnnotation alloc] initWhithTitle:[NSString stringWithFormat:@"%@", point.partner.name] location:location image:iconImage];
-                    
-                    [self updateAnnotationVisibleRect:annotation];
-                }
-            }];
-        }];
-    
-//    }];
-    
-//    NSOperation *operationImportPoints = [NSBlockOperation blockOperationWithBlock:^{
-    
-//    }];
-    
-//    NSOperation *operationAddAnnotations = [NSBlockOperation blockOperationWithBlock:^{
-//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//                    }];
-//    }];
-//
-//    [operationImportPoints addDependency:operationImportPartners];
-//    [operationAddAnnotations addDependency:operationImportPoints];
-//    
-//    [self.importQueue addOperations:@[operationImportPartners, operationImportPoints, operationAddAnnotations] waitUntilFinished:NO];
+    [self.importer importDepositionPoints:self.mapView.region.center.latitude longitude:self.mapView.region.center.longitude radius:radius handler:^{
+        
+        NSArray *points = [[self fetchedResultsController:[DepositionPoint entityName] predicate:nil sortBy:@"partnerName"] fetchedObjects];
+        
+        for (DepositionPoint* point in points) {
+            
+            CLLocationCoordinate2D location;
+            location.latitude = [point.latitude doubleValue];
+            location.longitude = [point.longitude doubleValue];
+            
+            UIImage *iconImage = [UIImage imageWithData:point.partner.icon.image];
+            
+            AFCustomAnnotation *annotation = [[AFCustomAnnotation alloc] initWhithTitle:[NSString stringWithFormat:@"%@", point.partner.name] location:location image:iconImage];
+            
+            if ([self.mapView.annotations count] == 0 || ![self isExistingAnnotationOnMap:annotation]) {
+                [self.mapView addAnnotation:annotation];
+            }
+        }
+    }];
 }
 
--(void)updateAnnotationVisibleRect:(AFCustomAnnotation *) newAnnotation {
+- (BOOL)isExistingAnnotationOnMap:(AFCustomAnnotation *)annotation {
     
-    NSSet *annotationSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
-    NSArray *annotationArray = [annotationSet allObjects];
-    
-    if ([annotationArray count] == 0) {
-        [self.mapView addAnnotation:newAnnotation];
-    }
-    
-    for (AFCustomAnnotation *annotation in annotationArray) {
-        if (newAnnotation.coordinate.latitude != annotation.coordinate.latitude || newAnnotation.coordinate.longitude != annotation.coordinate.longitude) {
-            [self.mapView addAnnotation:newAnnotation];
+    for (AFCustomAnnotation *annotationMap in self.mapView.annotations) {
+        if (annotationMap.coordinate.latitude == annotation.coordinate.latitude && annotationMap.coordinate.longitude == annotation.coordinate.longitude) {
+            return YES;
         }
     }
+    return NO;
 }
 
 - (void)updateUserLocation {
@@ -268,7 +241,6 @@
     if ([annotation isKindOfClass:[AFCustomAnnotation class]]) {
         
         AFCustomAnnotation *customAnnotation =  (AFCustomAnnotation *)annotation;
-        
         MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         
         if (!annotationView) {
